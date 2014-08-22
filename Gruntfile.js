@@ -21,6 +21,8 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+  grunt.loadNpmTasks('grunt-ngdocs');
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -133,7 +135,8 @@ module.exports = function (grunt) {
           ]
         }]
       },
-      server: '.tmp'
+      server: '.tmp',
+      docs: 'docs'
     },
 
     // Add vendor prefixed styles
@@ -408,7 +411,23 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.coffee',
         singleRun: true
       }
+    },
+
+    // Documentation settings
+    ngdocs: {
+      options: {
+        dest: 'app/docs',
+        html5Mode: false,
+        startPage: '/api',
+        title: 'Backlogg Docs',
+        titleLink: '/docs'
+      },
+      api: {
+        src: ['.tmp/scripts/**/*.js'],
+        title: 'API'
+      }
     }
+
   });
 
 
@@ -442,6 +461,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'clean:docs',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
@@ -460,6 +480,12 @@ module.exports = function (grunt) {
   grunt.registerTask('default', [
     'newer:jshint',
     'test',
-    'build'
+    'build',
+    'ngdocs'
   ]);
+
+  grunt.registerTask('karma', [
+    // TODO: What should go here?
+  ]);
+
 };

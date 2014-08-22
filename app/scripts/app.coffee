@@ -3,13 +3,13 @@
 ###*
  # @ngdoc overview
  # @name backloggWebApp
- # @description
- # # backloggWebApp
  #
+ # @description
+ # backloggWebApp
  # Main module of the application.
 ###
 angular
-  .module('backloggWebApp', [
+  .module('backloggWeb', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
