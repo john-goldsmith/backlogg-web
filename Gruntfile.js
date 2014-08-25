@@ -22,6 +22,8 @@ module.exports = function (grunt) {
   };
 
   grunt.loadNpmTasks('grunt-ngdocs');
+  // grunt.loadNpmTasks('grunt-slim');
+  grunt.loadNpmTasks('grunt-contrib-jade');
 
   // Define the configuration for all the tasks
   grunt.initConfig({
@@ -56,11 +58,21 @@ module.exports = function (grunt) {
         },
         files: [
           '<%= yeoman.app %>/{,*/}*.html',
+          // '.tmp/{,*/}*.html',
           '.tmp/styles/{,*/}*.css',
           '.tmp/scripts/{,*/}*.js',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
-      }
+      },
+      // slim: {
+      //   files: ['<%= yeoman.app %>/views/{,*/}*.slim'],
+      //   tasks: ['slim']
+      // }
+      jade: {
+        // files: ['<%= yeoman.app %>/{,*/}*.jade'],
+        files: ['<%= yeoman.app %>/**/*.jade'],
+        tasks: ['jade']
+      },
     },
 
     // The actual grunt server settings
@@ -240,7 +252,8 @@ module.exports = function (grunt) {
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
     useminPrepare: {
-      html: '<%= yeoman.app %>/index.html',
+      // html: '<%= yeoman.app %>/index.jade',
+      html: '.tmp/index.html',
       options: {
         dest: '<%= yeoman.dist %>',
         flow: {
@@ -426,6 +439,44 @@ module.exports = function (grunt) {
         src: ['.tmp/scripts/**/*.js'],
         title: 'API'
       }
+    },
+
+    // slim: {
+    //   dist: {
+    //     files: [{
+    //       expand: true,
+    //       cwd: '<%= yeoman.app %>',
+    //       // src: ['{,*/}*.slim'],
+    //       src: ['**/*.slim'],
+    //       dest: '.tmp/',
+    //       ext: '.html'
+    //     }]
+    //   },
+    //   dev: {
+    //     files: [{
+    //       expand: true,
+    //       cwd: '<%= yeoman.app %>',
+    //       // src: ['{,*/}*.slim'],
+    //       src: ['**/*.slim'],
+    //       dest: '.tmp/',
+    //       ext: '.html'
+    //     }]
+    //   }
+    // }
+
+    jade: {
+      dist: {
+        options: {
+          pretty: true
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.app %>',
+          dest: '.tmp',
+          src: '**/*.jade',
+          ext: '.html'
+        }]
+      }
     }
 
   });
@@ -438,6 +489,8 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'jade',
+      // 'slim',
       'wiredep',
       'concurrent:server',
       'autoprefixer',
@@ -462,6 +515,8 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean:dist',
     'clean:docs',
+    'jade',
+    // 'slim',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
@@ -479,6 +534,8 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'newer:jshint',
+    'jade',
+    // 'slim',
     'test',
     'build',
     'ngdocs'

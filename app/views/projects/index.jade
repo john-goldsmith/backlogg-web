@@ -1,0 +1,5 @@
+div(ng-controller="ProjectsController as projectsCtrl")
+  h1 Projects
+  ul
+    li(ng-repeat="project in projects")
+      a(href="#/projects/{{project.project.id}}") {{project.project.name}}
