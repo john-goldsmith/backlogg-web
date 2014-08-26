@@ -11,8 +11,8 @@ html.no-js
     <!-- bower:css -->
     <!-- endbower -->
     <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    link(rel="stylesheet" href="styles/main.css")
+    <!-- build:css(.tmp) styles/application.css -->
+    link(rel="stylesheet" href="styles/application.css")
     <!-- endbuild -->
 
   body(ng-app="backloggWeb" ng-controller="ApplicationController as applicationCtrl")
@@ -26,24 +26,12 @@ html.no-js
       | to improve your experience.
     <![endif]-->
 
-    div.container
-      div.header
-        ul.nav.nav-pills.pull-right
-          li.active
-            a(ng-href="#/projects") Projects
-        h3.text-muted backloggWeb
+    include ./views/shared/_navbar.jade
 
+    div.container-fluid
       div(ng-view="")
 
-    //- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-    //- script
-    //-   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    //-   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    //-   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    //-   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    //-   ga('create', 'UA-XXXXX-X');
-    //-   ga('send', 'pageview');
+    include ./views/shared/_google_analytics.jade
 
     <!-- build:js(.) scripts/oldieshim.js -->
     <!--[if lt IE 9]>
@@ -79,11 +67,15 @@ html.no-js
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    script(src="scripts/app.js")
+    script(src="scripts/application.js")
     script(src="scripts/routes.js")
+
     script(src="scripts/controllers/application_controller.js")
     script(src="scripts/controllers/projects_controller.js")
     script(src="scripts/controllers/project_controller.js")
-    script(src="scripts/services/project.js")
-    script(src="scripts/services/projects.js")
+    script(src="scripts/controllers/sprints_controller.js")
+    script(src="scripts/controllers/sprint_controller.js")
+
+    script(src="scripts/services/project_service.js")
+    script(src="scripts/services/sprint_service.js")
     <!-- endbuild -->

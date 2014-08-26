@@ -1,5 +1,4 @@
 div(ng-controller="ProjectsController as projectsCtrl")
-  h1 Projects
-  ul
-    li(ng-repeat="project in projects")
-      a(href="#/projects/{{project.project.id}}") {{project.project.name}}
+  a.project(href="#/projects/{{project.project.id}}" ng-repeat="project in projects")
+    i.glyphicon.glyphicon-cog
+    {{project.project.name}}

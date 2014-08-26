@@ -9,8 +9,8 @@
 ###
 angular.module('backloggWeb')
 
-  .controller 'ProjectsController', ['$scope', 'Projects', ($scope, Projects) ->
+  .controller 'ProjectsController', ['$scope', 'Project', ($scope, Project) ->
 
-    $scope.projects = Projects.all()
+    $scope.projects = Project.query()
 
   ]

@@ -2,7 +2,7 @@
 
 ###*
  # @ngdoc function
- # @name backloggWebApp.factory:Projects
+ # @name backloggWebApp.factory:Project
 
  # @description
  # Controller of the backloggWebApp
@@ -12,8 +12,11 @@ angular.module('projectServices', ['ngResource'])
   .factory 'Project', ['$resource', ($resource) ->
 
     $resource('http://localhost:9292/api/v1/projects/:projectId', {}
-      find_by_id:
-        method: "GET"
+      # all:
+      #   method: "GET"
+      #   isArray: true
+      # find_by_id:
+      #   method: "GET"
     )
 
   ]

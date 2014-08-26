@@ -11,6 +11,6 @@ angular.module('backloggWeb')
 
   .controller 'ProjectController', ['$scope', '$routeParams', 'Project', ($scope, $routeParams, Project) ->
 
-    $scope.project = Project.find_by_id projectId: $routeParams.projectId
+    $scope.project = Project.get projectId: $routeParams.projectId
 
   ]

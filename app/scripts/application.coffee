@@ -14,5 +14,6 @@ angular.module('backloggWeb', [
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'projectServices'
+    'projectServices',
+    'sprintServices'
   ])
