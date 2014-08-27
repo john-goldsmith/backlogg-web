@@ -16,4 +16,7 @@ angular.module('backloggWeb', [
     'ngTouch',
     'projectServices',
     'sprintServices'
+    'columnServices'
+    'taskServices'
+    'commentServices'
   ])

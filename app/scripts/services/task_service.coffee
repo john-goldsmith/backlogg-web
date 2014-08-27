@@ -2,16 +2,16 @@
 
 ###*
  # @ngdoc function
- # @name backloggWebApp.factory:Sprint
+ # @name backloggWebApp.factory:Task
 
  # @description
  # Controller of the backloggWebApp
 ###
-angular.module('sprintServices', ['ngResource'])
+angular.module('taskServices', ['ngResource'])
 
-  .factory 'Sprint', ['$resource', ($resource) ->
+  .factory 'Task', ['$resource', ($resource) ->
 
-    $resource('http://localhost:9292/api/v1/projects/:projectId/sprints', {}
+    $resource('http://localhost:9292/api/v1/projects/:projectId/tasks', {}
       isArray: true
       # all:
       #   method: "GET"

@@ -2,16 +2,16 @@
 
 ###*
  # @ngdoc function
- # @name backloggWebApp.factory:Sprint
+ # @name backloggWebApp.factory:Comment
 
  # @description
  # Controller of the backloggWebApp
 ###
-angular.module('sprintServices', ['ngResource'])
+angular.module('commentServices', ['ngResource'])
 
-  .factory 'Sprint', ['$resource', ($resource) ->
+  .factory 'Comment', ['$resource', ($resource) ->
 
-    $resource('http://localhost:9292/api/v1/projects/:projectId/sprints', {}
+    $resource('http://localhost:9292/api/v1/projects/:projectId/comments', {}
       isArray: true
       # all:
       #   method: "GET"
