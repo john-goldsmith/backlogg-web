@@ -1,2 +1,2 @@
-//- div(ng-controller="SprintsController as sprintsCtrl")
-a.sprint(href="#/projects/{{project.project.id}}/columns" ng-repeat="project in projects") Sprint
+div(ng-controller="SprintsController as sprintsCtrl")
+  a.sprint(href="#/projects/{{project.project.id}}/columns" ng-repeat="sprint in sprints") {{sprint.sprint.name}}

@@ -12,7 +12,7 @@ angular.module('columnServices', ['ngResource'])
   .factory 'Column', ['$resource', ($resource) ->
 
     $resource('http://localhost:9292/api/v1/projects/:projectId/columns', {}
-      # isArray: true
+      isArray: true
       # all:
       #   method: "GET"
       #   isArray: true
