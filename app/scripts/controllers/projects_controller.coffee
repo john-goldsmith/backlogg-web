@@ -9,10 +9,25 @@
 ###
 angular.module('backloggWeb')
 
-  .controller 'ProjectsController', ['$rootScope', '$scope', 'Project', ($rootScope, $scope, Project) ->
+  .controller 'ProjectsController', ['$scope', '$modal', 'Project', '$log', ($scope, $modal, Project, $log) ->
 
     $scope.projects = Project.query()
-    console.log $rootScope
-    console.log $scope
+
+    $scope.open = (size = "lg") ->
+      modalInstance = $modal.open(
+        templateUrl: 'views/projects/new.html'
+        controller: 'ModalInstanceController'
+        size: size
+        resolve:
+          projects: ->
+            return $scope.projects;
+      )
+
+      modalInstance.result.then ((selectedItem) ->
+        $scope.selected = selectedItem
+      ), ->
+        $log.info 'Modal dismissed at: ' + new Date()
+
+    return
 
   ]

@@ -15,6 +15,8 @@ angular.module('backloggWeb', [
     'ngSanitize',
     'ngTouch',
 
+    'ui.bootstrap',
+
     'projectServices',
     'sprintServices',
     'columnServices',

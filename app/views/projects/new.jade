@@ -1,0 +1,26 @@
+div.modal-header
+  h3.modal-title New Project
+
+div.modal-body
+  //- ul
+  //-   li(ng-repeat="project in projects")
+  //-     a(ng-click="selected.project = project")
+  //-       {{project.project.name}}
+  //- | Selected:
+  //- b
+  //-   {{selected.project}}
+  form(name="new-project" role="form")
+
+    div.form-group
+      label(for="project-name") Project name
+      input.form-control#project-name(type="text" placeholder="Project name")
+
+    div.form-group
+      label(for="project-code") Project code
+      input.form-control#project-code(type="text" placeholder="Project code")
+
+
+
+div.modal-footer
+  button.btn.btn-primary(ng-click="ok()") OK
+  button.btn.btn-warning(ng-click="cancel()") Cancel
