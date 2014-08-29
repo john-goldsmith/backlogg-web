@@ -11,7 +11,13 @@ angular.module('backloggWeb')
 
   .controller 'ProjectsController', ['$scope', '$modal', 'Project', '$log', ($scope, $modal, Project, $log) ->
 
+    $scope.showInactive = false
     $scope.projects = Project.query()
+    # $scope.projects = if $scope.showInactive then Project.query() else _.filter(Project.query(), (project) -> project.is_active
+    $scope.projects = _.filter($scope.projects, (item) ->
+      console.log 'aaaaaa'
+      return item.is_active
+    )
 
     $scope.open = (size = "lg") ->
       modalInstance = $modal.open(

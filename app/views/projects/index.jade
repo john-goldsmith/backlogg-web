@@ -1,13 +1,14 @@
 div(ng-controller="ProjectsController as projectsCtrl")
 
   a.btn.btn-default(ng-click="open()")
-    i.glyphicon.glyphicon-plus New Project
+    i.glyphicon.glyphicon-plus
+    | New Project
 
   div.checkbox
     label
-      input(type="checkbox")
+      input(type="checkbox" ng-model="showInactive" ng-true-value="true" ng-false-value="false")
       | Show inactive
 
   a.project(href="#/projects/{{project.project.id}}/sprints" ng-repeat="project in projects | filter:search")
     i.glyphicon.glyphicon-cog
-  {{project.project.name}}
+    {{project.project.name}}
