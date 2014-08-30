@@ -22,5 +22,7 @@ angular.module('backloggWeb', [
     'sprintServices',
     'columnServices',
     'taskServices',
-    'commentServices'
+    'commentServices',
+
+    'projectsFilter'
   ])
