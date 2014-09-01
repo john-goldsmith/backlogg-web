@@ -9,10 +9,9 @@ div(ng-controller="ProjectsController as projectsCtrl")
       input(type="checkbox" ng-model="includeInactive")
       | Show inactive
 
-  div.project(ng-repeat="project in projects | filter:showInactive | filter:search")
+  div.project(ng-class="{active: project.project.is_active, inactive: !project.project.is_active}" ng-repeat="project in projects | filter:showInactive | filter:search")
 
     a(href="#/projects/{{project.project.id}}/sprints")
-      i.glyphicon.glyphicon-cog
       {{project.project.name}}
 
-    {{project.project.is_active}}
+    i.glyphicon.glyphicon-cog
