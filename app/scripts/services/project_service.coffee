@@ -1,4 +1,4 @@
-'use strict'
+"use strict"
 
 ###*
  # @ngdoc function
@@ -7,16 +7,28 @@
  # @description
  # Controller of the backloggWebApp
 ###
-angular.module('projectServices', ['ngResource'])
+angular.module("projectServices", ["ngResource"])
 
-  .factory 'Project', ['$resource', ($resource) ->
+  .factory "Project", ["$resource", ($resource) ->
 
-    $resource('http://localhost:9292/api/v1/projects/:projectId', {}
-      # all:
+    $resource("http://localhost:9292/api/v1/projects/:id", {},
+      all:
+        method: "GET"
+        isArray: true
+        params:
+          include_inactive: true
+      # active:
       #   method: "GET"
       #   isArray: true
-      # find_by_id:
+      # inactive:
       #   method: "GET"
+      #   isArray: true
+      create:
+        method: "POST"
+        isArray: false
+      update:
+        method: "PUT"
+        isArray: false
     )
 
   ]

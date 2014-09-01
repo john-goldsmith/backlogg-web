@@ -1,4 +1,4 @@
-'use strict'
+"use strict"
 
 ###*
  # @ngdoc function
@@ -7,20 +7,27 @@
  # @description
  # Controller of the backloggWebApp
 ###
-angular.module('backloggWeb')
+angular.module("backloggWeb")
 
-  .controller 'ModalInstanceController', ['$scope', '$modalInstance', 'projects', ($scope, $modalInstance, projects) ->
+  .controller "ModalInstanceController", ["$scope", "$rootScope", "$modalInstance", "Project", ($scope, $rootScope, $modalInstance, Project) ->
 
-    $scope.projects = projects
-
-    $scope.selected =
-      project: $scope.projects[0]
+    $scope.project = {}
+    console.log $rootScope
 
     $scope.ok = ->
-      $modalInstance.close $scope.selected.project
+      console.log "$scope.ok"
+      Project.create
+        name: $scope.project.name
+        code: $scope.project.code
+        slug: $scope.project.slug
+        is_active: $scope.project.active
+        user_id: $scope.project.owner
+      $modalInstance.close()
+      return
 
     $scope.cancel = ->
-      $modalInstance.dismiss 'cancel'
+      console.log "$scope.cancel"
+      $modalInstance.dismiss "cancel"
 
     return
 

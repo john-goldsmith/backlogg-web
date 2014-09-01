@@ -1,4 +1,4 @@
-'use strict'
+"use strict"
 
 ###*
  # @ngdoc function
@@ -7,32 +7,38 @@
  # @description
  # Controller of the backloggWebApp
 ###
-angular.module('backloggWeb')
+angular.module("backloggWeb")
 
-  .controller 'ProjectsController', ['$scope', '$modal', 'Project', '$log', ($scope, $modal, Project, $log) ->
+  .controller "ProjectsController", ["$scope", "$rootScope", "$modal", "Project", "$log", ($scope, $rootScope, $modal, Project, $log) ->
 
-    $scope.showInactive = false
-    $scope.projects = Project.query()
-    # $scope.proxjects = if $scope.showInactive then Project.query() else _.filter(Project.query(), (project) -> project.is_active
-    # $scope.projects = _.filter([$scope.projects], (item) ->
-    #   console.log item.project
-    #   # return item.project.is_active
-    # )
+    # console.log $scope
+    # console.log $rootScope
+
+    $scope.includeInactive = false
+    $scope.projects = Project.all()
+
+    $scope.showInactive = (project) ->
+      if $scope.includeInactive
+        project.project.is_active or !project.project.is_active
+      else
+        project.project.is_active
 
     $scope.open = (size = "lg") ->
+      console.log "$scope.open"
       modalInstance = $modal.open(
-        templateUrl: 'views/projects/new.html'
-        controller: 'ModalInstanceController'
+        templateUrl: "views/projects/new.html"
+        controller: "ModalInstanceController"
         size: size
-        resolve:
-          projects: ->
-            return $scope.projects;
+        # resolve:
+        #   projects: ->
+        #     return $scope.projects;
       )
 
-      modalInstance.result.then ((selectedItem) ->
-        $scope.selected = selectedItem
+      modalInstance.result.then ( ->
+        console.log "result.then"
+        $scope.projects = Project.all()
       ), ->
-        $log.info 'Modal dismissed at: ' + new Date()
+        $log.info "Modal dismissed at: " + new Date()
 
     return
 

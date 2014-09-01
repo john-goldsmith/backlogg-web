@@ -30,5 +30,4 @@ $ bower update
 - [Fulcrum](http://www.opensourcerails.com/fulcrum)
 
 ## To-do
-- Implement [Angular UI](https://github.com/angular-ui/bootstrap)
 - Implement [Font Awesome](https://github.com/picardy/angular-fontawesome)

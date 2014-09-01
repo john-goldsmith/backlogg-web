@@ -7,12 +7,9 @@
  # @description
  # Controller of the backloggWebApp
 ###
-# angular.module('backloggWeb')
 angular.module('projectsFilter', [])
-  .filter('onlyActive', ->
-    console.log 'aaaa'
-    return (project) ->
-      console.log 'bbbbb'
-      # return project.is_active
-      console.log project.$resolved
-  )
+
+  .filter 'onlyActive', ->
+
+    (showInactive) ->
+      console.log showInactive
