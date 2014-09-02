@@ -1,6 +1,6 @@
 div(ng-controller="ProjectsController as projectsCtrl")
 
-  a.btn.btn-default(ng-click="open()")
+  a.btn.btn-default(ng-click="new()")
     i.glyphicon.glyphicon-plus
     | New Project
 
@@ -11,7 +11,8 @@ div(ng-controller="ProjectsController as projectsCtrl")
 
   div.project(ng-class="{active: project.project.is_active, inactive: !project.project.is_active}" ng-repeat="project in projects | filter:showInactive | filter:search")
 
-    a(href="#/projects/{{project.project.id}}/sprints")
+    //- href="#/projects/{{project.project.id}}/sprints"
+    a(ng-click="edit(project)")
       {{project.project.name}}
 
     i.glyphicon.glyphicon-cog

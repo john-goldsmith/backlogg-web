@@ -1,0 +1,30 @@
+div.modal-header
+  h3.modal-title
+    {{project.project.name}}
+    small
+      &nbsp; {{project.project.code | uppercase}}
+
+div.modal-body
+
+  form(role="form" novalidate="novalidate")
+
+    div.form-group
+      label(for="project-name") Project name
+      input.form-control#project-name(type="text" placeholder="Project name" ng-model="project.project.name")
+
+    div.form-group
+      label(for="project-code") Project code
+      input.form-control#project-code(type="text" placeholder="Project code" ng-model="project.project.code" maxlength="2" minlength="2")
+
+    div.form-group
+      label(for="project-owner") Owner
+      input.form-control#project-owner(type="text" placeholder="Project owner" ng-model="project.project.user.id")
+
+    div.checkbox
+      label
+        input(type="checkbox" checked="checked" ng-model="project.project.is_active")
+        | Active?
+
+div.modal-footer
+  button.btn.btn-primary(ng-click="ok()") OK
+  button.btn.btn-warning(ng-click="cancel()") Cancel

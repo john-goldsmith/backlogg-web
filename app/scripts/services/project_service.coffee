@@ -11,7 +11,9 @@ angular.module("projectServices", ["ngResource"])
 
   .factory "Project", ["$resource", ($resource) ->
 
-    $resource("http://localhost:9292/api/v1/projects/:id", {},
+    $resource("http://localhost:9292/api/v1/projects/:id",
+      id: "@id"
+    ,
       all:
         method: "GET"
         isArray: true
@@ -29,6 +31,9 @@ angular.module("projectServices", ["ngResource"])
       update:
         method: "PUT"
         isArray: false
+        url: "http://localhost:9292/api/v1/projects/:id"
+        params:
+          id: "@id"
     )
 
   ]

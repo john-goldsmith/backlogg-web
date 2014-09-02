@@ -1,5 +1,8 @@
 div.modal-header
-  h3.modal-title New Project
+  h3.modal-title
+    {{project.name}}
+    small
+      &nbsp; {{project.code}}
 
 div.modal-body
 
@@ -11,7 +14,7 @@ div.modal-body
 
     div.form-group
       label(for="project-code") Project code
-      input.form-control#project-code(type="text" placeholder="Project code" ng-model="project.code")
+      input.form-control#project-code(type="text" placeholder="Project code" ng-model="project.code" maxlength="2" minlength="2")
 
     div.form-group
       label(for="project-owner") Owner

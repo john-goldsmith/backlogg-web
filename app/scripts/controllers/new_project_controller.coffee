@@ -2,31 +2,29 @@
 
 ###*
  # @ngdoc function
- # @name backloggWebApp.controller:ModalInstanceController
+ # @name backloggWebApp.controller:NewProjectController
 
  # @description
  # Controller of the backloggWebApp
 ###
 angular.module("backloggWeb")
 
-  .controller "ModalInstanceController", ["$scope", "$rootScope", "$modalInstance", "Project", ($scope, $rootScope, $modalInstance, Project) ->
+  .controller "NewProjectController", ["$scope", "$modalInstance", "Project", ($scope, $modalInstance, Project) ->
 
     $scope.project = {}
-    console.log $rootScope
+    $scope.project.name ||= "New Project"
 
     $scope.ok = ->
-      console.log "$scope.ok"
       Project.create
         name: $scope.project.name
         code: $scope.project.code
-        slug: $scope.project.slug
+        # slug: $scope.project.slug
         is_active: $scope.project.active
         user_id: $scope.project.owner
       $modalInstance.close()
       return
 
     $scope.cancel = ->
-      console.log "$scope.cancel"
       $modalInstance.dismiss "cancel"
 
     return
