@@ -14,14 +14,12 @@ angular.module("backloggWeb")
     $scope.project = project
 
     $scope.ok = ->
-      $scope.project.$update()
-        # id: $scope.project.id
-        # name: $scope.project.name
-        # code: $scope.project.code
-        # slug: $scope.project.slug
-        # is_active: $scope.project.active
-        # user_id: $scope.project.owner
-      # $scope.project.$save()
+      Project.update
+        id: $scope.project.project.id
+        name: $scope.project.project.name
+        code: $scope.project.project.code
+        user_id: $scope.project.project.user.id
+        is_active: $scope.project.project.is_active
       $modalInstance.close()
       return
 

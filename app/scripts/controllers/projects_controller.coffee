@@ -9,15 +9,10 @@
 ###
 angular.module("backloggWeb")
 
-  .controller "ProjectsController", ["$scope", "$rootScope", "$modal", "Project", "$log", "Restangular", ($scope, $rootScope, $modal, Project, $log, Restangular) ->
+  .controller "ProjectsController", ["$scope", "$rootScope", "$modal", "Project", "$log", ($scope, $rootScope, $modal, Project, $log) ->
 
     $scope.includeInactive = false
-
-    $scope.getAllProjects = ->
-      Restangular.all("projects").getList({include_inactive: true}).then (projects) ->
-        $scope.projects = projects
-
-    $scope.getAllProjects()
+    $scope.projects = Project.all()
 
     $scope.showInactive = (project) ->
       if $scope.includeInactive
@@ -26,7 +21,7 @@ angular.module("backloggWeb")
         project.project.is_active
 
     $scope.new = (size="lg") ->
-      modalInstance = $modal.open
+      newProjectModalInstance = $modal.open
         templateUrl: "views/projects/new.html"
         controller: "NewProjectController"
         size: size
@@ -34,13 +29,13 @@ angular.module("backloggWeb")
           projects: ->
             return $scope.projects
 
-      modalInstance.result.then ( ->
-        $scope.getAllProjects()
+      newProjectModalInstance.result.then ( ->
+        $scope.projects = Project.all()
       ), ->
         $log.info "Modal dismissed at: " + new Date()
 
     $scope.edit = (project, size="lg") ->
-      modalInstance = $modal.open
+      editProjectModalInstance = $modal.open
         templateUrl: "views/projects/edit.html"
         controller: "EditProjectController"
         size: size
@@ -48,10 +43,11 @@ angular.module("backloggWeb")
           project: ->
             return project;
 
-      modalInstance.result.then ( ->
+      editProjectModalInstance.result.then(->
         $scope.projects = Project.all()
-      ), ->
+      , ->
         $log.info "Modal dismissed at: " + new Date()
+      )
 
     return
 

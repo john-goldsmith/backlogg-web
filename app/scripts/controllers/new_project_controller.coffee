@@ -9,13 +9,17 @@
 ###
 angular.module("backloggWeb")
 
-  .controller "NewProjectController", ["$scope", "$modalInstance", "Project", "Restangular", "projects", ($scope, $modalInstance, Project, Restangular, projects) ->
+  .controller "NewProjectController", ["$scope", "$modalInstance", "Project", ($scope, $modalInstance, Project) ->
 
     $scope.project = {}
 
     $scope.ok = ->
-      projects.post($scope.project).then ->
-        $modalInstance.close()
+      Project.create
+        name: $scope.project.name
+        code: $scope.project.code
+        user_id: $scope.project.owner
+        is_active: $scope.project.active
+      $modalInstance.close()
 
     $scope.cancel = ->
       $modalInstance.dismiss "cancel"

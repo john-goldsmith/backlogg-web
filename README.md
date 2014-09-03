@@ -32,3 +32,4 @@ $ bower update
 ## To-do
 - Implement [Font Awesome](https://github.com/picardy/angular-fontawesome)
 - Implement [FireAngular](https://www.firebase.com/docs/web/libraries/angular/index.html)
+- Implement [Restangular](https://github.com/mgonto/restangular)

@@ -19,21 +19,24 @@ angular.module("projectServices", ["ngResource"])
         isArray: true
         params:
           include_inactive: true
+
       # active:
       #   method: "GET"
       #   isArray: true
+      #   params:
+      #     include_inactive: false
+
       # inactive:
       #   method: "GET"
       #   isArray: true
+
       create:
         method: "POST"
         isArray: false
+
       update:
         method: "PUT"
         isArray: false
-        url: "http://localhost:9292/api/v1/projects/:id"
-        params:
-          id: "@id"
     )
 
   ]
