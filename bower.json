@@ -14,7 +14,8 @@
     "angular-route": "1.2.16",
     "angular-bootstrap": "0.11.0",
     "underscore": "",
-    "angular-underscore": ""
+    "angular-underscore": "",
+    "restangular": ""
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",

@@ -1,4 +1,4 @@
-'use strict'
+"use strict"
 
 ###*
  # @ngdoc overview
@@ -7,22 +7,23 @@
  # @description
  # Main module of the application.
 ###
-angular.module('backloggWeb', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch',
+angular.module("backloggWeb", [
+    "ngAnimate",
+    "ngCookies",
+    "ngResource",
+    "ngRoute",
+    "ngSanitize",
+    "ngTouch",
 
-    'ui.bootstrap',
-    'angular-underscore',
+    "ui.bootstrap",
+    "angular-underscore",
+    "restangular",
 
-    'projectServices',
-    'sprintServices',
-    'columnServices',
-    'taskServices',
-    'commentServices',
+    "projectServices",
+    "sprintServices",
+    "columnServices",
+    "taskServices",
+    "commentServices",
 
-    'projectsFilter'
+    "projectsFilter"
   ])
