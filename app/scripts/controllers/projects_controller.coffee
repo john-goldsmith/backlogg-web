@@ -13,6 +13,10 @@ angular.module("backloggWeb")
 
     $scope.includeInactive = false
     $scope.projects = Project.all()
+    $scope.sort = "project.name"
+
+    $scope.sortBy = (item) ->
+      $scope.sort = "project.#{item}"
 
     $scope.showInactive = (project) ->
       if $scope.includeInactive
@@ -48,10 +52,6 @@ angular.module("backloggWeb")
         console.log 'then'
       , ->
         $log.info "Modal dismissed at: " + new Date()
-      ).finally(->
-        # setTimeout(->
-        #   $scope.projects = Project.all()
-        # , 1000)
       )
 
     return

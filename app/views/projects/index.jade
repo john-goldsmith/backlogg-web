@@ -4,29 +4,41 @@ div(ng-controller="ProjectsController as projectsCtrl")
     i.glyphicon.glyphicon-plus
     | New Project
 
+  div.btn-group
+    button.btn.btn-default.dropdown-toggle(type="button" data-toggle="dropdown") Sort by {{sort}}
+      span.caret
+    ul.dropdown-menu(role="menu")
+      li
+        a(ng-click="sortBy('created_at')") Created date
+      li
+        a(ng-click="sortBy('updated_at')") Updated date
+      li
+        a(ng-click="sortBy('name')") Name
+      li
+        a(ng-click="sortBy('code')") Code
+
   div.checkbox
     label
       input(type="checkbox" ng-model="includeInactive")
       | Show inactive
 
-  div.project(ng-class="{active: project.project.is_active, inactive: !project.project.is_active}" ng-repeat="project in projects | filter:showInactive | filter:search")
+  div.project(ng-class="{active: project.project.is_active, inactive: !project.project.is_active}" ng-repeat="project in projects | filter:showInactive | filter:search | orderBy:sort")
 
-    //- href="#/projects/{{project.project.id}}/sprints"
-    a(ng-click="edit(project)")
-      {{project.project.name}}
-
-    a(ng-click="actions()" ng-controller="ProjectActionsController as projectActionsCtrl")
-      div.btn-group(dropdown is-open="status.isopen")
-        button.btn.btn-primary.dropdown-toggle(type="button" ng-disabled="disabled") Button dropdown
-          span.caret
-        ul.dropdown-menu(role="menu")
-          li
-            a(href="#") Action
-          li
-            a(href="#") Another action
-          li
-            a(href="#") Something else here
-          li.divider
-          li
-            a(href="#") Separated link
-      //- i.glyphicon.glyphicon-cog
+    div.panel.panel-default
+      div.panel-heading
+        div.panel-title
+          a(href="#/projects/{{project.project.id}}/sprints")
+            {{project.project.name}} ({{project.project.code}})
+        div.panel-actions
+          a(ng-click="actions()" ng-controller="ProjectActionsController as projectActionsCtrl")
+            div.btn-group(dropdown is-open="status.isopen")
+              button.btn.btn-primary.dropdown-toggle(type="button" ng-disabled="disabled")
+                i.glyphicon.glyphicon-cog
+              ul.dropdown-menu(role="menu")
+                li
+                  a(ng-click="edit(project)") Edit
+                li.divider
+                li
+                  a(href="#") Deactivate
+      div.panel-body
+        | Created {{project.project.created_at}}

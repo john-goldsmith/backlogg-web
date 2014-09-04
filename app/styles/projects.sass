@@ -1,27 +1,46 @@
 @import "shared/vars"
 
 .project
-  border-radius: 4px
-  background-color: #f2f2f2
-  display: block
-  border: 1px solid #e5e5e5
-  width: 100px
-  height: 100px
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2)
-  float: left
-  margin: 0 15px 15px 0
-  padding: 15px
+  // border-radius: 4px
+  // background-color: #f2f2f2
+  // display: block
+  // border: 1px solid #e5e5e5
+  // height: 200px
+
+  // padding: 15px
+
+  .panel
+    width: 300px
+    float: left
+    margin: 0 15px 15px 0
+
+    .panel-heading
+
+      .panel-title
+        // float: left
+
+        a
+          color: blue
+
+      .panel-actions
+        float: right
+
+    .panel-body
+
+    &:hover
+      box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.2)
+
+  .btn-group
+    display: none
 
   &:hover
 
-    i
+    .btn-group
       display: block
 
-  i
-    display: none
-
   &.inactive
-    color: red !important
+
+    a
+      color: #ccc !important
 
   &.active
-    color: green !important
