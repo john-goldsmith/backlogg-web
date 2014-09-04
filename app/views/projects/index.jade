@@ -15,4 +15,18 @@ div(ng-controller="ProjectsController as projectsCtrl")
     a(ng-click="edit(project)")
       {{project.project.name}}
 
-    i.glyphicon.glyphicon-cog
+    a(ng-click="actions()" ng-controller="ProjectActionsController as projectActionsCtrl")
+      div.btn-group(dropdown is-open="status.isopen")
+        button.btn.btn-primary.dropdown-toggle(type="button" ng-disabled="disabled") Button dropdown
+          span.caret
+        ul.dropdown-menu(role="menu")
+          li
+            a(href="#") Action
+          li
+            a(href="#") Another action
+          li
+            a(href="#") Something else here
+          li.divider
+          li
+            a(href="#") Separated link
+      //- i.glyphicon.glyphicon-cog

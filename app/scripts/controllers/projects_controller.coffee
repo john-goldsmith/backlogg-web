@@ -29,10 +29,11 @@ angular.module("backloggWeb")
           projects: ->
             return $scope.projects
 
-      newProjectModalInstance.result.then ( ->
+      newProjectModalInstance.result.then(->
         $scope.projects = Project.all()
-      ), ->
+      , ->
         $log.info "Modal dismissed at: " + new Date()
+      )
 
     $scope.edit = (project, size="lg") ->
       editProjectModalInstance = $modal.open
@@ -41,12 +42,16 @@ angular.module("backloggWeb")
         size: size
         resolve:
           project: ->
-            return project;
+            return project
 
       editProjectModalInstance.result.then(->
-        $scope.projects = Project.all()
+        console.log 'then'
       , ->
         $log.info "Modal dismissed at: " + new Date()
+      ).finally(->
+        # setTimeout(->
+        #   $scope.projects = Project.all()
+        # , 1000)
       )
 
     return
