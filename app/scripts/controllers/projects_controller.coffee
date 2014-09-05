@@ -9,7 +9,7 @@
 ###
 angular.module("backloggWeb")
 
-  .controller "ProjectsController", ["$scope", "$rootScope", "$modal", "Project", "$log", ($scope, $rootScope, $modal, Project, $log) ->
+  .controller "ProjectsController", ["$scope", "$rootScope", "$modal", "Project", "$log", "$state", ($scope, $rootScope, $modal, Project, $log, $state) ->
 
     $scope.includeInactive = false
     $scope.projects = Project.all()
@@ -32,10 +32,14 @@ angular.module("backloggWeb")
         resolve:
           projects: ->
             return $scope.projects
+          newPath: ->
+            return "projects.new"
 
       newProjectModalInstance.result.then(->
         $scope.projects = Project.all()
+        $state.go "projects"
       , ->
+        $state.go "projects"
         $log.info "Modal dismissed at: " + new Date()
       )
 
@@ -47,10 +51,13 @@ angular.module("backloggWeb")
         resolve:
           project: ->
             return project
+          newPath: ->
+            return "projects.edit"
 
       editProjectModalInstance.result.then(->
-        console.log 'then'
+        $state.go "projects"
       , ->
+        $state.go "projects"
         $log.info "Modal dismissed at: " + new Date()
       )
 

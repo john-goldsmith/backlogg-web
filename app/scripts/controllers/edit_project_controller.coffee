@@ -9,9 +9,12 @@
 ###
 angular.module("backloggWeb")
 
-  .controller "EditProjectController", ["$scope", "$modalInstance", "project", "Project", ($scope, $modalInstance, project, Project) ->
+  .controller "EditProjectController", ["$scope", "$modalInstance", "project", "Project", "$state", "newPath", ($scope, $modalInstance, project, Project, $state, newPath) ->
 
     $scope.project = project
+
+    $modalInstance.opened.then ->
+      $state.go(newPath)
 
     $scope.ok = ->
       Project.update

@@ -16,6 +16,7 @@ angular.module("backloggWeb", [
     "ngTouch",
 
     "ui.bootstrap",
+    "ui.router",
     "angular-underscore",
     # "restangular",
 
