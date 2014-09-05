@@ -24,42 +24,26 @@ angular.module("backloggWeb")
       else
         project.project.is_active
 
-    $scope.new = (size="lg") ->
-      newProjectModalInstance = $modal.open
-        templateUrl: "views/projects/new.html"
-        controller: "NewProjectController"
-        size: size
-        resolve:
-          projects: ->
-            return $scope.projects
-          newPath: ->
-            return "projects.new"
+    $scope.new = ->
+      $state.go "projects.new"
 
-      newProjectModalInstance.result.then(->
-        $scope.projects = Project.all()
-        $state.go "projects"
-      , ->
-        $state.go "projects"
-        $log.info "Modal dismissed at: " + new Date()
-      )
+    $scope.edit = (project) ->
+      # $state.go "projects.edit", projectId: project.id
+      # editProjectModalInstance = $modal.open
+      #   templateUrl: "views/projects/edit.html"
+      #   controller: "EditProjectController"
+      #   size: size
+      #   resolve:
+      #     project: ->
+      #       return project
+      #     newPath: ->
+      #       return "projects.edit"
 
-    $scope.edit = (project, size="lg") ->
-      editProjectModalInstance = $modal.open
-        templateUrl: "views/projects/edit.html"
-        controller: "EditProjectController"
-        size: size
-        resolve:
-          project: ->
-            return project
-          newPath: ->
-            return "projects.edit"
-
-      editProjectModalInstance.result.then(->
-        $state.go "projects"
-      , ->
-        $state.go "projects"
-        $log.info "Modal dismissed at: " + new Date()
-      )
+      # editProjectModalInstance.result.then ->
+      #   $state.go "projects"
+      # , ->
+      #   $state.go "projects"
+      #   $log.info "Modal dismissed at: " + new Date()
 
     return
 

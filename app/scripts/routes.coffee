@@ -46,13 +46,42 @@ angular.module('backloggWeb')
         templateUrl: "views/projects/index.html"
         controller: "ProjectsController"
 
-      .state "projects.edit",
-        url: "/:projectId/edit"
-        controller: "ProjectsController"
-
       .state "projects.new",
         url: "/new"
-        controller: "ProjectsController"
+        # controller: "ProjectsController"
+        onEnter: ["$stateParams", "$state", "$modal", "Project", ($stateParams, $state, $modal, Project) ->
+          $modal.open
+            templateUrl: "views/projects/new.html"
+            controller: "NewProjectController"
+            size: "lg"
+            resolve:
+              newPath: ->
+                return "projects.new"
+          .result.then ->
+            # $scope.projects = Project.all()
+            $state.go "projects", null, reload: true
+          , ->
+            $state.go "projects", null, reload: true
+        ]
+
+      .state "projects.edit",
+        url: "/:projectId/edit"
+        # controller: "ProjectsController"
+        onEnter: ["$stateParams", "$state", "$modal", "Project", ($stateParams, $state, $modal, Project) ->
+          $modal.open
+            templateUrl: "views/projects/edit.html"
+            controller: "EditProjectController"
+            size: "lg"
+            resolve:
+              project: ->
+                return Project.get id: $stateParams.projectId
+              newPath: ->
+                return "projects.edit"
+          .result.then ->
+            $state.go "projects"
+          , ->
+            $state.go "projects"
+        ]
 
       return
 
