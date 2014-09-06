@@ -45,10 +45,22 @@ angular.module('backloggWeb')
         url: "/projects"
         templateUrl: "views/projects/index.html"
         controller: "ProjectsController"
+        # resolve:
+        #   projects: null
+        # controller: ["$scope", "Project", "projects" ($scope, Project, projects) ->
+        #   console.log 'projects'
+        #   projects = $scope.projects = Project.all()
+        # ]
+        # data:
+        #   projects: $scope.projects
 
       .state "projects.new",
         url: "/new"
-        # controller: "ProjectsController"
+        controller: "ProjectsController"
+        # controller: ["$scope", ($scope) ->
+        #   console.log 'jalksdjflkasdf'
+        #   console.log $scope
+        # ]
         onEnter: ["$stateParams", "$state", "$modal", "Project", ($stateParams, $state, $modal, Project) ->
           $modal.open
             templateUrl: "views/projects/new.html"

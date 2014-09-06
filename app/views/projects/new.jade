@@ -1,6 +1,6 @@
 div.modal-header
   h3.modal-title
-    {{project.name}}
+    {{project.name || "New Project"}}
     small
       &nbsp; {{project.code | uppercase}}
 
