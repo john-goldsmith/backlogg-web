@@ -1,8 +1,8 @@
 div.modal-header
   h3.modal-title
-    {{project.project.name}}
+    {{project.name}}
     small
-      &nbsp; {{project.project.code | uppercase}}
+      &nbsp; {{project.code | uppercase}}
 
 div.modal-body
 
@@ -10,19 +10,19 @@ div.modal-body
 
     div.form-group
       label(for="project-name") Project name
-      input.form-control#project-name(type="text" placeholder="Project name" ng-model="project.project.name")
+      input.form-control#project-name(type="text" placeholder="Project name" ng-model="project.name")
 
     div.form-group
       label(for="project-code") Project code
-      input.form-control#project-code(type="text" placeholder="Project code" ng-model="project.project.code" maxlength="2" minlength="2")
+      input.form-control#project-code(type="text" placeholder="Project code" ng-model="project.code" maxlength="2" minlength="2")
 
     div.form-group
       label(for="project-owner") Owner
-      input.form-control#project-owner(type="text" placeholder="Project owner" ng-model="project.project.user.id")
+      input.form-control#project-owner(type="text" placeholder="Project owner" ng-model="project.user.id")
 
     div.checkbox
       label
-        input(type="checkbox" ng-model="project.project.is_active")
+        input(type="checkbox" ng-model="project.is_active")
         | Active?
 
 div.modal-footer

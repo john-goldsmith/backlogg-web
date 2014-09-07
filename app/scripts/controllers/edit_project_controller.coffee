@@ -9,26 +9,29 @@
 ###
 angular.module("backloggWeb")
 
-  .controller "EditProjectController", ["$scope", "$modalInstance", "project", "Project", "$state", "newPath", ($scope, $modalInstance, project, Project, $state, newPath) ->
+  .controller "EditProjectController", ["$scope", "$modalInstance", "project", "Project", "$state", ($scope, $modalInstance, project, Project, $state) ->
 
     $scope.project = project
-
-    $modalInstance.opened.then ->
-      $state.go(newPath)
+    $scope.currentModal = undefined
 
     $scope.ok = ->
+      # TODO: Simplify the following update request. The API doesn't
+      # understand the entire project.user object -- it only cares about
+      # user_id. The following would be preferable:
+      #
+      # Project.update(id: project.id, project)
       Project.update
-        id: $scope.project.project.id
-        name: $scope.project.project.name
-        code: $scope.project.project.code
-        user_id: $scope.project.project.user.id
-        is_active: $scope.project.project.is_active
+        id: project.id
+        name: $scope.project.name
+        code: $scope.project.code
+        user_id: $scope.project.user.id
+        is_active: $scope.project.is_active
       $modalInstance.close()
-      return
 
     $scope.cancel = ->
-      $modalInstance.dismiss "cancel"
+      $modalInstance.dismiss()
 
-    return
+    $scope.$on "$stateChangeSuccess", (event, toState, toParams, fromState, fromParams) ->
+      $scope.currentModal.dismiss() if $scope.currentModal
 
   ]

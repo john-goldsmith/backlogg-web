@@ -9,7 +9,7 @@
 ###
 angular.module("backloggWeb")
 
-  .controller "ProjectActionsController", ["$scope", "$log", ($scope, $log) ->
+  .controller "ProjectActionsController", ["$scope", ($scope) ->
 
     $scope.items = [
       'The first choice!',

@@ -9,12 +9,10 @@
 ###
 angular.module("backloggWeb")
 
-  .controller "NewProjectController", ["$scope", "$modalInstance", "Project", "$state", "newPath", ($scope, $modalInstance, Project, $state, newPath) ->
+  .controller "NewProjectController", ["$scope", "$modalInstance", "Project", "$state", ($scope, $modalInstance, Project, $state, newPath) ->
 
     $scope.project = {}
-
-    $modalInstance.opened.then ->
-      $state.go(newPath)
+    $scope.currentModal = undefined
 
     $scope.ok = ->
       Project.create
@@ -25,12 +23,9 @@ angular.module("backloggWeb")
       $modalInstance.close()
 
     $scope.cancel = ->
-      $modalInstance.dismiss "cancel"
+      $modalInstance.dismiss()
 
-    # $scope.$on "$stateChangeSuccess", ->
-    #   console.log 'jalksjldkfd'
-    #   $modalInstance.dismiss "cancel" if $state.current.name != newPath
-
-    return
+    $scope.$on "$stateChangeSuccess", (event, toState, toParams, fromState, fromParams) ->
+      $scope.currentModal.dismiss() if $scope.currentModal
 
   ]
