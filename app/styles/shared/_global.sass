@@ -1,28 +1,16 @@
-@import "./vars"
+@import "vars"
 
 body
   background-color: #222530
   padding-top: 70px
   color: $white
+  background-image: url(/images/noise_texture_2b2e3a.png)
+  background-repeat: repeat
 
-  .navbar
-    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, .2)
-    border-color: rgba(255, 255, 255, .05)
+  &.modal-open
 
-    .navbar-collapse
-
-      ul
-
-        li
-
-          &.active
-
-            a
-              background-color: $magenta
-              color: $white
-
-  .navbar-default
-    background-color: #2b2e3a
+    .navbar, #main-container
+      -webkit-filter: blur(1px)
 
   a
 

@@ -6,8 +6,8 @@
   // display: block
   // border: 1px solid #e5e5e5
   // height: 200px
-
   // padding: 15px
+  color: $slate
 
   .panel
     width: 300px
@@ -17,26 +17,42 @@
     .panel-heading
 
       .panel-title
-        // float: left
+        height: 36px
 
-        a
-          color: blue
+        .project-title
+          // display: inline-block
+          // width: 80%
+          overflow: hidden
+          white-space: nowrap
+          font-weight: bold
 
-      .panel-actions
-        float: right
+          small
+            margin-left: 4px
+            color: rgba(0, 0, 0, 0.5)
+            font-size: 12px
+
+        .project-actions
+          // display: inline-block
+          // float: right
+          // width: 20%
+
+      // .panel-actions
+      //   float: right
 
     .panel-body
 
     &:hover
-      box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.2)
+      box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.3)
+      transform: scale(1.1, 1.1)
 
   .btn-group
     display: none
+    float: right
 
   &:hover
 
     .btn-group
-      display: block
+      display: inline-block
 
   &.inactive
 

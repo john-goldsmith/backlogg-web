@@ -1,0 +1,216 @@
+@import "vars"
+
+.btn
+  text-decoration: none
+  height: 36px
+  display: inline-block
+  border-radius: $border-radius
+  // -webkit-box-shadow: 0 1px 0px 0 rgba(255, 255, 255, .3) inset
+  // box-shadow: 0 1px 0px 0 rgba(255, 255, 255, .3) inset
+  // background-repeat: repeat-x
+  // color: $light-grey
+  color: $white
+  text-align: center
+  text-transform: capitalize
+  font-size: 14px
+  // padding: 0px 10px
+  vertical-align: middle
+  line-height: 24px
+  text-decoration: none
+  // min-width: 80px
+  outline: 0
+  text-shadow: 0 2px rgba(0, 0, 0, 0.2)
+  border: none
+  font-weight: normal
+  // background-color: $white
+
+  &:hover
+    color: $white
+    text-decoration: none
+    // -webkit-box-shadow: 0 1px 0px 0 rgba(255, 255, 255, .3) inset
+    // box-shadow: 0 1px 0px 0 rgba(255, 255, 255, .3) inset
+
+  &:focus
+    color: $white
+    outline: 0
+
+  &:active
+    text-decoration: none
+    outline: 0
+    // -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5) inset
+    // box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4) inset
+
+  i
+    // margin-right: 5px
+
+  // Primary
+  &.btn-primary
+    background-color: $white
+    background-image: linear-gradient(rgba(255, 255, 255, .8), rgba(0, 0, 0, .06))
+    color: #444
+    text-shadow: none
+    border: 1px solid rgba(0, 0, 0, .1)
+    box-shadow: 0 1px 0 0 $white inset
+
+    &:hover
+      background-color: $white
+      background-image: linear-gradient(rgba(255, 255, 255, .9), rgba(0, 0, 0, .07))
+      border: 1px solid rgba(0, 0, 0, .2)
+      color: #333
+      text-shadow: -1px -1px 0 $white
+      box-shadow: 0 1px 0 0 $white inset, 0 1px 2px 0 rgba(0, 0, 0, .2)
+
+    &:focus
+      background-color: $white
+      background-image: linear-gradient(rgba(255, 255, 255, .9), rgba(0, 0, 0, .07))
+      border: 1px solid rgba(0, 0, 0, .2)
+      color: #333
+      text-shadow: -1px -1px 0 $white
+      box-shadow: 0 1px 0 0 $white inset, 0 1px 2px 0 rgba(0, 0, 0, .2)
+      outline: 0
+
+    &:active
+      background-color: $white
+      background-image: linear-gradient(rgba(255, 255, 255, .9), rgba(0, 0, 0, .07))
+      border: 1px solid rgba(0, 0, 0, .2)
+      color: #333
+      // -webkit-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2)
+      // box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2)
+      -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .2)
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, .2)
+      outline: 0
+
+  // Default
+  &.btn-default
+    background-color: $magenta
+    -webkit-box-shadow: 0px 3px 0px $magenta
+    box-shadow: 0px 3px 0px $magenta
+    // background-image: linear-gradient($magenta, $magenta)
+    // text-shadow: -1px -1px $magenta
+    // border: 1px solid $magenta
+
+    &:hover
+      background-color: $magenta
+      // background-image: linear-gradient($magenta, $magenta)
+
+    &:focus
+      background-color: $magenta
+      outline: 0
+      // background-image: linear-gradient($magenta, $magenta)
+
+    &:active
+      outline: 0
+      // background-color: $magenta
+      // background-image: linear-gradient($magenta, $magenta)
+
+  // Success
+  &.btn-success
+    background-color: $magenta
+    -webkit-box-shadow: 0px 3px 0px $magenta
+    box-shadow: 0px 3px 0px $magenta
+    // background-image: linear-gradient($magenta, $magenta)
+    // text-shadow: -1px -1px $magenta
+    // border: 1px solid $magenta
+
+    &:hover
+      background-color: $magenta
+      // background-image: linear-gradient($magenta, $magenta)
+
+    &:focus
+      background-color: $magenta
+      outline: 0
+      // background-image: linear-gradient($magenta, $magenta)
+
+    &:active
+      outline: 0
+      // background-color: $magenta
+      // background-image: linear-gradient($magenta, $magenta)
+
+  // Info
+  &.btn-info
+    background-color: $magenta
+    -webkit-box-shadow: 0px 3px 0px $magenta
+    box-shadow: 0px 3px 0px $magenta
+    // background-image: linear-gradient($magenta, $magenta)
+    // text-shadow: -1px -1px $magenta
+    // border: 1px solid $magenta
+
+    &:hover
+      background-color: $magenta
+      // background-image: linear-gradient($magenta, $magenta)
+
+    &:focus
+      outline: 0
+      background-color: $magenta
+      // background-image: linear-gradient($magenta, $magenta)
+
+    &:active
+      outline: 0
+      // background-color: $magenta
+      // background-image: linear-gradient($magenta, $magenta)
+
+  // Warning
+  &.btn-warning
+    background-color: $magenta
+    -webkit-box-shadow: 0px 3px 0px $magenta
+    box-shadow: 0px 3px 0px $magenta
+    // background-image: linear-gradient($magenta, $magenta)
+    // text-shadow: -1px -1px $magenta
+    // border: 1px solid $magenta
+
+    &:hover
+      background-color: $magenta
+      // background-image: linear-gradient($magenta, $magenta)
+
+    &:focus
+      outline: 0
+      background-color: $magenta
+      // background-image: linear-gradient($magenta, $magenta)
+
+    &:active
+      outline: 0
+      // background-color: $magenta
+      // background-image: linear-gradient($magenta, $magenta)
+
+  // Danger & Error
+  &.btn-danger
+    background-color: $magenta
+    -webkit-box-shadow: 0px 3px 0px $magenta
+    box-shadow: 0px 3px 0px $magenta
+    // background-image: linear-gradient($magenta, $magenta)
+    // text-shadow: -1px -1px $magenta
+    // border: 1px solid $magenta
+
+    &:hover
+      background-color: $magenta
+      // background-image: linear-gradient($magenta, $magenta)
+
+    &:focus
+      background-color: $magenta
+      outline: 0
+      // background-image: linear-gradient($magenta, $magenta)
+
+    &:active
+      outline: 0
+      // background-color: $magenta
+      // background-image: linear-gradient($magenta, $magenta)
+
+  // Links
+  &.btn-link
+    color: $magenta
+    border-radius: 0
+    -webkit-box-shadow: none
+    box-shadow: none
+    background-repeat: no-repeat
+    text-transform: none
+    font-weight: normal
+    padding: 10px
+    border: none
+    line-height: inherit
+    text-shadow: none
+    outline: 0
+
+    &:hover, &:focus, &:active
+      color: $magenta
+      text-decoration: underline
+      outline: 0

@@ -24,25 +24,27 @@ div.btn-group
 div.checkbox
   label
     input(type="checkbox" ng-model="includeInactive")
-    | Show inactive
+    | Show archived
 
 div.project(ng-class="{active: project.is_active, inactive: !project.is_active}" ng-repeat="project in projects | filter:showInactive | filter:search | orderBy:orderAttribute")
 
   div.panel.panel-default
     div.panel-heading
       div.panel-title
-        a(href="#/projects/{{project.id}}/sprints")
-          {{project.name}} ({{project.code}})
-      div.panel-actions
-        a(ng-click="actions()" ng-controller="ProjectActionsController as projectActionsCtrl")
+        a.project-title(href="#/projects/{{project.id}}/sprints")
+          {{project.name}}
+          small
+            {{project.code}}
+        //- div.panel-actions
+        a.project-actions(ng-click="actions()" ng-controller="ProjectActionsController as projectActionsCtrl")
           div.btn-group(dropdown is-open="status.isopen")
             button.btn.btn-primary.dropdown-toggle(type="button" ng-disabled="disabled")
               i.glyphicon.glyphicon-cog
             ul.dropdown-menu(role="menu")
               li
                 a(ng-click="edit(project)" ui-sref="projects.edit({projectId: project.id})") Edit
-              li.divider
               li
-                a(href="#") Deactivate
+                a(href="#") Archive
     div.panel-body
-      | Created {{project.created_at}}
+      small
+        | Created {{project.created_at | date:'short'}}
