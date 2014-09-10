@@ -14,6 +14,9 @@ angular.module("backloggWeb")
     # Don't show archived projects by default
     $scope.includeInactive = false
 
+    # Show board view by default
+    $scope.view = "boards"
+
     # This gets resolved and injected via the 'projects' state
     $scope.projects = projects
 
@@ -23,6 +26,9 @@ angular.module("backloggWeb")
       updated_at: "modification"
       name: "name"
       code: "code"
+
+    $scope.viewAs = (view) ->
+      $scope.view = view
 
     $scope.sortBy = (sortAttribute) ->
       $scope.orderAttribute = sortAttribute

@@ -6,12 +6,11 @@
 
 a.btn.btn-default(ng-click="new()" ui-sref="projects.new")
   //- i.glyphicon.glyphicon-plus
-  i.fa.fa-plus-circle
-  | New Project
+  i.fa.fa-plus-circle New Project
 
 div.btn-group
   button.btn.btn-default.dropdown-toggle(type="button" data-toggle="dropdown") Sort by {{sortLabel}}
-    span.caret
+    i.fa.fa-chevron-down
   ul.dropdown-menu(role="menu")
     li
       a(ng-click="sortBy('created_at')") Creation
@@ -27,26 +26,57 @@ div.checkbox
     input(type="checkbox" ng-model="includeInactive")
     | Show archived
 
-div.project(ng-class="{active: project.is_active, inactive: !project.is_active}" ng-repeat="project in projects | filter:showInactive | filter:search | orderBy:orderAttribute")
+div.btn-group
+  button.btn.btn-default(type="button" ng-click="viewAs('list')")
+    i.fa.fa-list
+  button.btn.btn-default(type="button" class="btn btn-default" ng-click="viewAs('boards')")
+    i.fa.fa-th-large
 
+div.project(ng-if="view == 'boards'" ng-class="{active: project.is_active, inactive: !project.is_active}" ng-repeat="project in projects | filter:showInactive | filter:search | orderBy:orderAttribute")
   div.panel.panel-default
     div.panel-heading
       div.panel-title
-        a.project-title(href="#/projects/{{project.id}}/sprints")
-          {{project.name}}
-          small
-            {{project.code}}
+        a.project-title(href="#/projects/{{project.id}}/sprints") {{project.name}}
+        small {{project.code}}
         //- div.panel-actions
         a.project-actions(ng-click="actions()" ng-controller="ProjectActionsController as projectActionsCtrl")
           div.btn-group(dropdown is-open="status.isopen")
             button.btn.btn-primary.dropdown-toggle(type="button" ng-disabled="disabled")
-              i.glyphicon.glyphicon-cog
+              i.fa.fa-cog
             ul.dropdown-menu(role="menu")
               li
-                a(ng-click="edit(project)" ui-sref="projects.edit({projectId: project.id})") Edit
+                a(ng-click="edit(project)" ui-sref="projects.edit({projectId: project.id})")
+                  i.fa.fa-pencil
+                  | Edit
               li
-                a(ng-click="archive(project)" ng-if="project.is_active") Archive
-                a(ng-click="unarchive(project)" ng-if="!project.is_active") Unarchive
+                a(ng-click="archive(project)" ng-if="project.is_active")
+                  i.fa.fa-archive
+                  | Archive
+                a(ng-click="unarchive(project)" ng-if="!project.is_active")
+                  i.fa.fa-archive
+                  | Unarchive
     div.panel-body
       small
         | Created {{project.created_at | date:'short'}}
+
+div.list-group.project(ng-if="view == 'list'" ng-class="{active: project.is_active, inactive: !project.is_active}" ng-repeat="project in projects | filter:showInactive | filter:search | orderBy:orderAttribute")
+  a.list-group-item(href="#/projects/{{project.id}}/sprints")
+    h2 {{project.name}}
+      small {{project.code}}
+    //- a.project-actions(ng-click="actions()" ng-controller="ProjectActionsController as projectActionsCtrl")
+      div.btn-group(dropdown is-open="status.isopen")
+    button.btn.btn-primary.dropdown-toggle(type="button" ng-disabled="disabled")
+      i.fa.fa-cog
+    ul.dropdown-menu(role="menu")
+      li
+        a(ng-click="edit(project)" ui-sref="projects.edit({projectId: project.id})")
+          i.fa.fa-pencil
+          | Edit
+      li
+        a(ng-click="archive(project)" ng-if="project.is_active")
+          i.fa.fa-archive
+          | Archive
+        a(ng-click="unarchive(project)" ng-if="!project.is_active")
+          i.fa.fa-archive
+          | Unarchive
+    p Created {{project.created_at | date:'short'}}

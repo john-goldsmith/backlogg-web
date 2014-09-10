@@ -39,7 +39,7 @@ module.exports = function (grunt) {
       },
       coffee: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.{coffee,litcoffee,coffee.md}'],
-        tasks: ['newer:coffee:dist']
+        tasks: ['newer:coffee:dist', 'wiredep']
       },
       coffeeTest: {
         files: ['test/spec/{,*/}*.{coffee,litcoffee,coffee.md}'],
@@ -52,7 +52,8 @@ module.exports = function (grunt) {
         files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
         tasks: [
           'compass:server',
-          'autoprefixer'
+          'autoprefixer',
+          'wiredep'
         ]
       },
       gruntfile: {
@@ -73,7 +74,7 @@ module.exports = function (grunt) {
       jade: {
         // files: ['<%= yeoman.app %>/{,*/}*.jade'],
         files: ['<%= yeoman.app %>/**/*.jade'],
-        tasks: ['jade']
+        tasks: ['jade', 'wiredep']
       },
     },
 
