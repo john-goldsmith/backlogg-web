@@ -1,3 +1,6 @@
+@import "mixins"
+@import "vars"
+
 input
 
   &[type=checkbox]
@@ -15,6 +18,8 @@ input
     border-right: none
     box-shadow: none
     border-radius: 0
+    background-color: transparent
+    @include input-placeholder($magenta)
 
     &:focus
       box-shadow: none

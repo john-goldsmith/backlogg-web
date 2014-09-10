@@ -37,6 +37,17 @@ angular.module("projectServices", ["ngResource"])
       update:
         method: "PUT"
         isArray: false
+
+      archive:
+        method: "PUT"
+        isArray: false
+        url: "http://localhost:9292/api/v1/projects/:id/archive"
+
+      unarchive:
+        method: "PUT"
+        isArray: false
+        url: "http://localhost:9292/api/v1/projects/:id/unarchive"
+
     )
 
   ]

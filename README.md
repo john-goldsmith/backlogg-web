@@ -28,8 +28,9 @@ $ bower update
 - [Unfuddle](https://unfuddle.com)
 - [SprintApp](http://www.opensourcerails.com/sprintapp)
 - [Fulcrum](http://www.opensourcerails.com/fulcrum)
+- [Stack](http://www.getstack.io)
+- [Kanbanery](https://kanbanery.com)
 
 ## To-do
-- Implement [Font Awesome](https://github.com/picardy/angular-fontawesome)
 - Implement [FireAngular](https://www.firebase.com/docs/web/libraries/angular/index.html)
 - Implement [Restangular](https://github.com/mgonto/restangular)

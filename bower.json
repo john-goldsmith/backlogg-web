@@ -16,7 +16,10 @@
     "underscore": "",
     "angular-underscore": "",
     "restangular": "",
-    "angular-ui-router": ""
+    "angular-ui-router": "",
+    "fontawesome": "",
+    "angular-fontawesome": "",
+    "toastr": ""
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",

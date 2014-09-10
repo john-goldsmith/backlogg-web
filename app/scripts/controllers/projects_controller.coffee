@@ -11,8 +11,13 @@ angular.module("backloggWeb")
 
   .controller "ProjectsController", ["$scope", "$modal", "Project", "$state", "projects", ($scope, $modal, Project, $state, projects) ->
 
+    # Don't show archived projects by default
     $scope.includeInactive = false
+
+    # This gets resolved and injected via the 'projects' state
     $scope.projects = projects
+
+    # Create a mapping of sort values to their label
     $scope.sortMapping =
       created_at: "creation"
       updated_at: "modification"
@@ -32,6 +37,21 @@ angular.module("backloggWeb")
     $scope.edit = (project) ->
       $state.go "projects.edit", projectId: project.id
 
+    $scope.archive = (project) ->
+      Project.archive id: project.id
+      , (response) ->
+        toastr.success "Project archived"
+      , (response) ->
+        toastr.error "Failed to archive project: #{response.data.message}"
+
+    $scope.unarchive = (project) ->
+      Project.unarchive id: project.id
+      , (response) ->
+        toastr.success "Project unarchived"
+      , (response) ->
+        toastr.error "Failed to unarchive project: #{response.data.message}"
+
+    # Initial sort
     $scope.sortBy "name"
 
     return

@@ -23,6 +23,7 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-ngdocs');
   grunt.loadNpmTasks('grunt-contrib-jade');
+  grunt.loadNpmTasks('grunt-wiredep');
 
   // Define the configuration for all the tasks
   grunt.initConfig({
@@ -415,6 +416,12 @@ module.exports = function (grunt) {
             cwd: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap',
             src: '*.{eot,svg,ttf,woff}',
             dest: '<%= yeoman.dist %>/fonts/bootstrap'
+          },
+          {
+            expand: true,
+            cwd: 'bower_components/fontawesome/fonts',
+            src: '*.{eot,svg,ttf,woff}',
+            dest: '<%= yeoman.dist %>/fonts/fontawesome'
           }
         ]
       },
@@ -425,6 +432,12 @@ module.exports = function (grunt) {
             cwd: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap',
             src: '*.{eot,svg,ttf,woff}',
             dest: '.tmp/fonts/bootstrap'
+          },
+          {
+            expand: true,
+            cwd: 'bower_components/fontawesome/fonts',
+            src: '*.{eot,svg,ttf,woff}',
+            dest: '.tmp/fonts/fontawesome'
           }
         ]
       }
