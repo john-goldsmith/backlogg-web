@@ -9,10 +9,10 @@
 ###
 angular.module("backloggWeb")
 
-  .controller "EditProjectController", ["$scope", "$modalInstance", "project", "Project", "$state", ($scope, $modalInstance, project, Project, $state) ->
+  .controller "EditProjectController", ["$scope", "$modalInstance", "Project", "$state", "project", ($scope, $modalInstance, Project, $state, project) ->
 
     $scope.project = project
-    $scope.currentModal = undefined
+    # $scope.currentModal = undefined
 
     $scope.ok = ->
       # TODO: Simplify the following update request. The API doesn't
@@ -26,12 +26,16 @@ angular.module("backloggWeb")
         code: $scope.project.code
         user_id: $scope.project.user.id
         is_active: $scope.project.is_active
-      $modalInstance.close()
+      .$promise.then (updatedProject) ->
+        toastr.success "Project updated"
+        $modalInstance.close(updatedProject)
+      , (failureResponse) ->
+        toastr.error "Failed to update project: #{failureResponse.data.message}"
 
     $scope.cancel = ->
       $modalInstance.dismiss()
 
-    $scope.$on "$stateChangeSuccess", (event, toState, toParams, fromState, fromParams) ->
-      $scope.currentModal.dismiss() if $scope.currentModal
+    # $scope.$on "$stateChangeSuccess", (event, toState, toParams, fromState, fromParams) ->
+    #   $scope.currentModal.dismiss() if $scope.currentModal
 
   ]

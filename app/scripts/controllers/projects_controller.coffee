@@ -44,18 +44,18 @@ angular.module("backloggWeb")
       $state.go "projects.edit", projectId: project.id
 
     $scope.archive = (project) ->
-      Project.archive id: project.id
-      , (response) ->
+      project.$archive (successResponse) ->
         toastr.success "Project archived"
-      , (response) ->
-        toastr.error "Failed to archive project: #{response.data.message}"
+        $state.go "projects"
+      , (failureResponse) ->
+        toastr.error "Failed to archive project: #{failureResponse.data.message}"
 
     $scope.unarchive = (project) ->
-      Project.unarchive id: project.id
-      , (response) ->
+      project.$unarchive (successResponse) ->
         toastr.success "Project unarchived"
-      , (response) ->
-        toastr.error "Failed to unarchive project: #{response.data.message}"
+        $state.go "projects"
+      , (failureResponse) ->
+        toastr.error "Failed to unarchive project: #{failureResponse.data.message}"
 
     # Initial sort
     $scope.sortBy "name"

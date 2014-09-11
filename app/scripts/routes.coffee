@@ -17,33 +17,32 @@ angular.module("backloggWeb")
 
       .state "projects.new",
         url: "/new"
-        controller: "ProjectsController"
-        onEnter: ["$state", "$modal", ($state, $modal) ->
+        onEnter: ["$state", "$modal", "projects", ($state, $modal, projects) ->
           $modal.open
             templateUrl: "views/projects/new.html"
             controller: "NewProjectController"
             size: "lg"
-          .result.then ->
-            $state.go "projects", null, reload: true
+          .result.then (newProject) ->
+            projects.push(newProject)
+            $state.go "projects"
           , ->
-            $state.go "projects", null, reload: true
+            $state.go "projects"
         ]
 
       .state "projects.edit",
         url: "/:projectId/edit"
-        controller: "ProjectsController"
-        onEnter: ["$stateParams", "$state", "$modal", "Project", ($stateParams, $state, $modal, Project) ->
+        onEnter: ["$stateParams", "$state", "$modal", "Project", "projects", ($stateParams, $state, $modal, Project, projects) ->
           $modal.open
             templateUrl: "views/projects/edit.html"
             controller: "EditProjectController"
             size: "lg"
             resolve:
               project: ->
-                return Project.get(id: $stateParams.projectId).$promise
-          .result.then ->
-            $state.go "projects", null, reload: true
+                return _.findWhere(projects, id: parseInt($stateParams.projectId))
+          .result.then (updatedProject) ->
+            $state.go "projects"
           , ->
-            $state.go "projects", null, reload: true
+            $state.go "projects"
         ]
 
       return
