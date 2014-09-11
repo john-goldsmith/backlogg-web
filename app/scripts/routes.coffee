@@ -12,7 +12,7 @@ angular.module("backloggWeb")
         controller: "ProjectsController"
         resolve:
           projects: ["Project", (Project) ->
-            return Project.all().$promise
+            Project.all().$promise
           ]
 
       .state "projects.new",
@@ -38,12 +38,16 @@ angular.module("backloggWeb")
             size: "lg"
             resolve:
               project: ->
-                return _.findWhere(projects, id: parseInt($stateParams.projectId))
+                _.findWhere(projects, id: parseInt($stateParams.projectId))
           .result.then (updatedProject) ->
             $state.go "projects"
           , ->
             $state.go "projects"
         ]
+
+      .state "sprints",
+        url: "/projects/:projectId/sprints"
+        controller: "SprintsController"
 
       return
 

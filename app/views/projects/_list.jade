@@ -1,0 +1,21 @@
+div.list-group.project(ng-if="view == 'list'" ng-class="{active: project.is_active, inactive: !project.is_active}")
+  a.list-group-item(href="#/projects/{{project.id}}/sprints")
+    h2 {{project.name}}
+      small {{project.code}}
+    //- a.project-actions(ng-click="actions()" ng-controller="ProjectActionsController as projectActionsCtrl")
+      div.btn-group(dropdown is-open="status.isopen")
+    button.btn.btn-primary.dropdown-toggle(type="button" ng-disabled="disabled")
+      i.fa.fa-cog
+    ul.dropdown-menu(role="menu")
+      li
+        a(ng-click="edit(project)" ui-sref="projects.edit({projectId: project.id})")
+          i.fa.fa-pencil
+          | Edit
+      li
+        a(ng-click="archive(project)" ng-if="project.is_active")
+          i.fa.fa-archive
+          | Archive
+        a(ng-click="unarchive(project)" ng-if="!project.is_active")
+          i.fa.fa-archive
+          | Unarchive
+    p Created {{project.created_at | date:'short'}}

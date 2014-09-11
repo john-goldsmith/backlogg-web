@@ -1,4 +1,4 @@
-'use strict'
+"use strict"
 
 ###*
  # @ngdoc function
@@ -7,12 +7,12 @@
  # @description
  # Controller of the backloggWebApp
 ###
-angular.module('backloggWeb')
+angular.module("backloggWeb")
 
-  .controller 'SprintsController', ['$scope', '$routeParams', 'Project', 'Sprint', ($scope, $routeParams, Project, Sprint) ->
+  .controller "SprintsController", ["$scope", "$routeParams", "Project", "Sprint", "$state", "$stateParams", ($scope, $routeParams, Project, Sprint, $state, $stateParams) ->
 
-    $scope.project = Project.get projectId: $routeParams.projectId
+    $scope.sprints = Sprint.all(projectId: $stateParams.projectId)
 
-    $scope.sprints = Sprint.query projectId: $routeParams.projectId
+    return
 
   ]

@@ -30,6 +30,8 @@ $ bower update
 - [Fulcrum](http://www.opensourcerails.com/fulcrum)
 - [Stack](http://www.getstack.io)
 - [Kanbanery](https://kanbanery.com)
+- [Flat UI Colors](http://flatuicolors.com)
+- [UI Gradients](http://uigradients.com)
 
 ## To-do
 - Implement [FireAngular](https://www.firebase.com/docs/web/libraries/angular/index.html)
