@@ -11,8 +11,8 @@ angular.module("projectServices", ["ngResource"])
 
   .factory "Project", ["$resource", ($resource) ->
 
-    $resource("http://localhost:9292/api/v1/projects/:id",
-      id: "@id"
+    $resource("http://localhost:9292/api/v1/projects/:projectId",
+      projectId: "@id"
     ,
       all:
         method: "GET"
@@ -41,12 +41,12 @@ angular.module("projectServices", ["ngResource"])
       archive:
         method: "PUT"
         isArray: false
-        url: "http://localhost:9292/api/v1/projects/:id/archive"
+        url: "http://localhost:9292/api/v1/projects/:projectId/archive"
 
       unarchive:
         method: "PUT"
         isArray: false
-        url: "http://localhost:9292/api/v1/projects/:id/unarchive"
+        url: "http://localhost:9292/api/v1/projects/:projectId/unarchive"
 
     )
 

@@ -1,0 +1,21 @@
+div.list-group.sprint(ng-if="view == 'list'" ng-class="{active: sprint.is_active, inactive: !sprint.is_active}")
+  a.list-group-item(href="#/projects/{{project.id}}/sprints/{{sprint.id}}/columns")
+    h2 {{sprint.name}}
+      small {{sprint.code}}
+    //- a.sprint-actions(ng-click="actions()" ng-controller="SprintActionsController as sprintActionsCtrl")
+      div.btn-group(dropdown is-open="status.isopen")
+    button.btn.btn-primary.dropdown-toggle(type="button" ng-disabled="disabled")
+      i.fa.fa-cog
+    ul.dropdown-menu(role="menu")
+      li
+        a(ng-click="edit(sprint)" ui-sref="sprints.edit({projectId: project.id, sprintId: sprint.id})")
+          i.fa.fa-pencil
+          | Edit
+      li
+        a(ng-click="archive(sprint)" ng-if="sprint.is_active")
+          i.fa.fa-archive
+          | Archive
+        a(ng-click="unarchive(sprint)" ng-if="!sprint.is_active")
+          i.fa.fa-archive
+          | Unarchive
+    p Created {{sprint.created_at | date:'short'}}

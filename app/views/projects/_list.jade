@@ -1,6 +1,7 @@
-div.list-group.project(ng-if="view == 'list'" ng-class="{active: project.is_active, inactive: !project.is_active}")
-  a.list-group-item(href="#/projects/{{project.id}}/sprints")
-    h2 {{project.name}}
+div.list-group(ng-if="view == 'list'" ng-class="{active: project.is_active, inactive: !project.is_active}")
+  div.list-group-item
+    h2
+      a(href="#/projects/{{project.id}}/sprints") {{project.name}}
       small {{project.code}}
     //- a.project-actions(ng-click="actions()" ng-controller="ProjectActionsController as projectActionsCtrl")
       div.btn-group(dropdown is-open="status.isopen")

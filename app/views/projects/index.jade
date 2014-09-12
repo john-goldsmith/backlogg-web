@@ -13,26 +13,32 @@ div.btn-group
     i.fa.fa-chevron-down
   ul.dropdown-menu(role="menu")
     li
-      a(ng-click="sortBy('created_at')") Creation
+      a(ng-click="sortBy('created_at')" ui-sref="projects({sort: orderAttribute})") Creation
     li
-      a(ng-click="sortBy('updated_at')") Modification
+      a(ng-click="sortBy('updated_at')" ui-sref="projects({sort: orderAttribute})") Modification
     li
-      a(ng-click="sortBy('name')") Name
+      a(ng-click="sortBy('name')" ui-sref="projects({sort: orderAttribute})") Name
     li
-      a(ng-click="sortBy('code')") Code
+      a(ng-click="sortBy('code')" ui-sref="projects({sort: orderAttribute})") Code
 
 div.checkbox
   label
-    input(type="checkbox" ng-model="includeInactive")
+    input(type="checkbox" ui-sref="projects({archived: includeInactive})" ng-model="includeInactive")
     | Show archived
+    br
+    | archived = {{includeInactive}}
+    br
+    | view = {{view}}
+    br
+    | sort = {{orderAttribute}}
 
 div.btn-group
-  button.btn.btn-default(type="button" ng-click="viewAs('list')")
+  button.btn.btn-default(type="button" ng-click="viewAs('list')" ui-sref="projects({view: view})")
     i.fa.fa-list
-  button.btn.btn-default(type="button" class="btn btn-default" ng-click="viewAs('boards')")
+  button.btn.btn-default(type="button" class="btn btn-default" ng-click="viewAs('boards')" ui-sref="projects({view: view})")
     i.fa.fa-th-large
 
-div.projects(ng-repeat="project in projects | filter:showInactive | filter:search | orderBy:orderAttribute")
+div.project(ng-repeat="project in projects | filter:showInactive | filter:search | orderBy:orderAttribute")
 
   include ./_boards.jade
   include ./_list.jade

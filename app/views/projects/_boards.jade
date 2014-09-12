@@ -1,9 +1,9 @@
-div.project.panel.panel-default(ng-if="view == 'boards'" ng-class="{active: project.is_active, inactive: !project.is_active}")
+div.panel.panel-default(ng-if="view == 'boards'" ng-class="{active: project.is_active, inactive: !project.is_active}")
   div.panel-heading
     div.panel-title
-      a.project-title(href="#/projects/{{project.id}}/sprints") {{project.name}}
+      //- href="#/projects/{{project.id}}/sprints"
+      a.project-title(ui-sref="sprints({projectId: project.id})") {{project.name}}
       small {{project.code}}
-      //- div.panel-actions
       a.project-actions(ng-click="actions()" ng-controller="ProjectActionsController as projectActionsCtrl")
         div.btn-group(dropdown is-open="status.isopen")
           button.btn.btn-primary.dropdown-toggle(type="button" ng-disabled="disabled")
@@ -23,3 +23,5 @@ div.project.panel.panel-default(ng-if="view == 'boards'" ng-class="{active: proj
   div.panel-body
     small
       | Created {{project.created_at | date:'short'}}
+      br
+      | Updated {{project.updated_at | date:'short'}}

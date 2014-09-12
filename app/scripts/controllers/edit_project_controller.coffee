@@ -9,9 +9,9 @@
 ###
 angular.module("backloggWeb")
 
-  .controller "EditProjectController", ["$scope", "$modalInstance", "Project", "$state", "project", ($scope, $modalInstance, Project, $state, project) ->
+  .controller "EditProjectController", ["$scope", "$modalInstance", "Project", "$state", "$project", ($scope, $modalInstance, Project, $state, $project) ->
 
-    $scope.project = project
+    $scope.project = $project
     # $scope.currentModal = undefined
 
     $scope.ok = ->
@@ -21,7 +21,7 @@ angular.module("backloggWeb")
       #
       # Project.update(id: project.id, project)
       Project.update
-        id: project.id
+        id: $project.id
         name: $scope.project.name
         code: $scope.project.code
         user_id: $scope.project.user.id

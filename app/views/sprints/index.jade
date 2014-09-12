@@ -1,2 +1,32 @@
-div(ng-controller="SprintsController as sprintsCtrl")
-  a.sprint(href="#/projects/{{project.project.id}}/columns" ng-repeat="sprint in sprints") {{sprint.sprint.name}}
+a.btn.btn-default(ng-click="new()" ui-sref="sprints.new")
+  i.fa.fa-plus-circle
+  | New Sprint
+
+div.btn-group
+  button.btn.btn-default.dropdown-toggle(type="button" data-toggle="dropdown") Sort by {{sortLabel}}
+    i.fa.fa-chevron-down
+  ul.dropdown-menu(role="menu")
+    li
+      a(ng-click="sortBy('created_at')") Creation
+    li
+      a(ng-click="sortBy('updated_at')") Modification
+    li
+      a(ng-click="sortBy('name')") Name
+    li
+      a(ng-click="sortBy('code')") Code
+
+div.checkbox
+  label
+    input(type="checkbox" ng-model="includeInactive")
+    | Show archived
+
+div.btn-group
+  button.btn.btn-default(type="button" ng-click="viewAs('list')")
+    i.fa.fa-list
+  button.btn.btn-default(type="button" class="btn btn-default" ng-click="viewAs('boards')")
+    i.fa.fa-th-large
+
+div.sprints(ng-repeat="sprint in sprints | filter:showInactive | filter:search | orderBy:orderAttribute")
+
+  include ./_boards.jade
+  include ./_list.jade

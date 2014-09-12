@@ -9,16 +9,14 @@
 ###
 angular.module("backloggWeb")
 
-  .controller "ProjectsController", ["$scope", "$modal", "Project", "$state", "projects", ($scope, $modal, Project, $state, projects) ->
+  .controller "ProjectsController", ["$scope", "$modal", "Project", "$state", "$projects", "$stateParams", ($scope, $modal, Project, $state, $projects, $stateParams) ->
 
-    # Don't show archived projects by default
-    $scope.includeInactive = false
-
-    # Show board view by default
-    $scope.view = "boards"
+    $scope.includeInactive = $stateParams.archived is 'true'
+    $scope.view = $stateParams.view || "boards"
+    $scope.orderAttribute = $stateParams.sort || "updated_at"
 
     # This gets resolved and injected via the 'projects' state
-    $scope.projects = projects
+    $scope.projects = $projects
 
     # Create a mapping of sort values to their label
     $scope.sortMapping =
@@ -58,7 +56,7 @@ angular.module("backloggWeb")
         toastr.error "Failed to unarchive project: #{failureResponse.data.message}"
 
     # Initial sort
-    $scope.sortBy "name"
+    # $scope.sortBy "name"
 
     return
 

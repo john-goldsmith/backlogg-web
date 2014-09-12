@@ -11,8 +11,8 @@ angular.module('sprintServices', ['ngResource'])
 
   .factory 'Sprint', ['$resource', ($resource) ->
 
-    $resource('http://localhost:9292/api/v1/projects/:projectId/sprints',
-      id: "@id"
+    $resource('http://localhost:9292/api/v1/projects/:projectId/sprints/:sprintId',
+      sprintId: "@id"
     ,
       all:
         method: "GET"
