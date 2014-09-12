@@ -9,11 +9,26 @@
 ###
 angular.module("backloggWeb")
 
-  .controller "ProjectsController", ["$scope", "$modal", "Project", "$state", "$projects", "$stateParams", ($scope, $modal, Project, $state, $projects, $stateParams) ->
+  .controller "ProjectsController", ["$scope", "$modal", "Project", "$state", "$projects", "$stateParams", "$location", "$routeParams", "$route", ($scope, $modal, Project, $state, $projects, $stateParams, $location, $routeParams, $route) ->
 
-    $scope.includeInactive = $stateParams.archived is 'true'
-    $scope.view = $stateParams.view || "boards"
-    $scope.orderAttribute = $stateParams.sort || "updated_at"
+    # $scope.includeInactive = $stateParams.archived is 'true'
+    $scope.includeInactive = $location.search('archived') #is 'true'
+
+    # $scope.view = $stateParams.view || "boards"
+    # $scope.view = $location.search('view') || "boards"
+
+    # $scope.orderAttribute = $stateParams.sort || "updated_at"
+    # $scope.orderAttribute = $location.search('sort') || "updated_at"
+
+    console.log $stateParams
+    console.log $routeParams
+    console.log $route.routes
+    console.log $route.current.routes
+    console.log $route.current
+
+    # See https://github.com/angular-ui/ui-router/issues/64
+    $scope.updateQueryParam = (key, value) ->
+      $location.search(key, value)
 
     # This gets resolved and injected via the 'projects' state
     $scope.projects = $projects

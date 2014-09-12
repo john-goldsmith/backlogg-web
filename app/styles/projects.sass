@@ -28,11 +28,15 @@
 
     .panel-body
 
+    &.inactive
+
+      opacity: 0.5
+
   .list-group
 
-  &:hover
-    box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.3)
-    transform: scale(1.1, 1.1)
+    &.inactive
+
+      opacity: 0.5
 
   .btn-group
     display: none
@@ -40,11 +44,9 @@
 
   &:hover
 
+    .panel
+      box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.3)
+      transform: scale(1.1, 1.1)
+
     .btn-group
       display: inline-block
-
-  &.inactive
-
-    opacity: 0.5
-
-  &.active

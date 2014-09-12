@@ -13,7 +13,7 @@ angular.module("backloggWeb")
         url: "/projects?archived&view&sort"
         templateUrl: "views/projects/index.html"
         controller: "ProjectsController"
-        # reloadOnSearch: false
+        reloadOnSearch: false
         resolve:
           $projects: ["Project", (Project) ->
             Project.all().$promise
