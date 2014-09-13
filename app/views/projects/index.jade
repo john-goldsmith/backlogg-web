@@ -4,7 +4,7 @@
 //-
 //- div(ng-controller="ProjectsController as projectsCtrl")
 
-a.btn.btn-default(ng-click="new()" ui-sref="projects.new")
+a.btn.btn-default(ng-click="new()" ui-sref="projects.new({view: view, sort: orderAttribute, archived: includeInactive})")
   i.fa.fa-plus-circle
   | New Project
 
@@ -25,24 +25,20 @@ div.btn-group
       //- ui-sref="projects({sort: orderAttribute})"
       a(ng-click="sortBy('code'); updateQueryParam('sort', orderAttribute)") Code
 
-div.checkbox
+div.checkbox.btn.btn-default
+  i.fa(ng-class="{'fa-eye-slash': includeInactive, 'fa-eye': !includeInactive}")
   label
     //- ui-sref="projects({archived: includeInactive})"
-    input(type="checkbox" ng-click="updateQueryParam('archived', includeInactive)" ng-model="includeInactive")
-    | Show archived
-    br
-    | archived = {{includeInactive}}
-    br
-    | view = {{view}}
-    br
-    | sort = {{orderAttribute}}
+    //- ng-true-value="true" ng-false-value="false"
+    input(type="checkbox" ng-change="updateQueryParam('archived', includeInactive)" ng-model="includeInactive")
+    {{ includeInactive ? "Hide archived" : "Show archived" }}
 
 div.btn-group
   //- ui-sref="projects({view: view})"
-  button.btn.btn-default(type="button" ng-click="viewAs('list'); updateQueryParam('view', view)")
+  button.btn.btn-default(type="button" ng-click="viewAs('list'); updateQueryParam('view', view)" ng-class="{active: isActiveView('list')}")
     i.fa.fa-list
   //- ui-sref="projects({view: view})"
-  button.btn.btn-default(type="button" class="btn btn-default" ng-click="viewAs('boards'); updateQueryParam('view', view)")
+  button.btn.btn-default(type="button" class="btn btn-default" ng-click="viewAs('boards'); updateQueryParam('view', view)" ng-class="{active: isActiveView('boards')}")
     i.fa.fa-th-large
 
 div.project(ng-repeat="project in projects | filter:showInactive | filter:search | orderBy:orderAttribute")

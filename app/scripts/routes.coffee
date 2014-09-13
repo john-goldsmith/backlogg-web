@@ -2,7 +2,7 @@ angular.module("backloggWeb")
 
   .config ["$stateProvider", "$urlRouterProvider", ($stateProvider, $urlRouterProvider) ->
 
-    $urlRouterProvider.otherwise("/projects")
+    $urlRouterProvider.otherwise("/projects?archived=false&sort=updated_at&view=boards")
 
     $stateProvider
 
