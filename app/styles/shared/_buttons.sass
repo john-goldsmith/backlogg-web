@@ -55,7 +55,7 @@
     border: 1px solid rgba(0, 0, 0, .1)
     box-shadow: 0 1px 0 0 $white inset
 
-    &:hover
+    &:hover, &.hover
       background-color: $white
       background-image: linear-gradient(rgba(255, 255, 255, .9), rgba(0, 0, 0, .07))
       border: 1px solid rgba(0, 0, 0, .2)
@@ -63,7 +63,7 @@
       text-shadow: -1px -1px 0 $white
       box-shadow: 0 1px 0 0 $white inset, 0 1px 2px 0 rgba(0, 0, 0, .2)
 
-    &:focus
+    &:focus, &.focus
       background-color: $white
       background-image: linear-gradient(rgba(255, 255, 255, .9), rgba(0, 0, 0, .07))
       border: 1px solid rgba(0, 0, 0, .2)
@@ -72,7 +72,7 @@
       box-shadow: 0 1px 0 0 $white inset, 0 1px 2px 0 rgba(0, 0, 0, .2)
       outline: 0
 
-    &:active
+    &:active, &.active
       background-color: $white
       background-image: linear-gradient(rgba(255, 255, 255, .9), rgba(0, 0, 0, .07))
       border: 1px solid rgba(0, 0, 0, .2)
@@ -86,23 +86,27 @@
   // Default
   &.btn-default
     background-color: $magenta
+    color: rgba(255, 255, 255, 0.8)
     // -webkit-box-shadow: 0px 3px 0px $magenta
     // box-shadow: 0px 3px 0px $magenta
     // background-image: linear-gradient($magenta, $magenta)
     // text-shadow: -1px -1px $magenta
     // border: 1px solid $magenta
 
-    &:hover
+    &:hover, &.hover
       background-color: $magenta
+      color: $white
       // background-image: linear-gradient($magenta, $magenta)
 
-    &:focus
+    &:focus, &.focus
       background-color: $magenta
+      color: $white
       outline: 0
       // background-image: linear-gradient($magenta, $magenta)
 
-    &:active
+    &:active, &.active
       outline: 0
+      color: $white
       // background-color: $magenta
       // background-image: linear-gradient($magenta, $magenta)
 
@@ -115,16 +119,16 @@
     // text-shadow: -1px -1px $magenta
     // border: 1px solid $magenta
 
-    &:hover
+    &:hover, &.hover
       background-color: $magenta
       // background-image: linear-gradient($magenta, $magenta)
 
-    &:focus
+    &:focus, &.focus
       background-color: $magenta
       outline: 0
       // background-image: linear-gradient($magenta, $magenta)
 
-    &:active
+    &:active, &.active
       outline: 0
       // background-color: $magenta
       // background-image: linear-gradient($magenta, $magenta)
@@ -138,16 +142,16 @@
     // text-shadow: -1px -1px $magenta
     // border: 1px solid $magenta
 
-    &:hover
+    &:hover, &.hover
       background-color: $magenta
       // background-image: linear-gradient($magenta, $magenta)
 
-    &:focus
+    &:focus, &.focus
       outline: 0
       background-color: $magenta
       // background-image: linear-gradient($magenta, $magenta)
 
-    &:active
+    &:active, &.active
       outline: 0
       // background-color: $magenta
       // background-image: linear-gradient($magenta, $magenta)
@@ -161,16 +165,16 @@
     // text-shadow: -1px -1px $magenta
     // border: 1px solid $magenta
 
-    &:hover
+    &:hover, &.hover
       background-color: $magenta
       // background-image: linear-gradient($magenta, $magenta)
 
-    &:focus
+    &:focus, &.focus
       outline: 0
       background-color: $magenta
       // background-image: linear-gradient($magenta, $magenta)
 
-    &:active
+    &:active, &.active
       outline: 0
       // background-color: $magenta
       // background-image: linear-gradient($magenta, $magenta)
@@ -184,16 +188,16 @@
     // text-shadow: -1px -1px $magenta
     // border: 1px solid $magenta
 
-    &:hover
+    &:hover, &.hover
       background-color: $magenta
       // background-image: linear-gradient($magenta, $magenta)
 
-    &:focus
+    &:focus, &.focus
       background-color: $magenta
       outline: 0
       // background-image: linear-gradient($magenta, $magenta)
 
-    &:active
+    &:active, &.active
       outline: 0
       // background-color: $magenta
       // background-image: linear-gradient($magenta, $magenta)
@@ -214,6 +218,7 @@
     outline: 0
 
     &:hover, &:focus, &:active
+    &.hover, &.focus, &.active
       color: $magenta
       text-decoration: underline
       outline: 0

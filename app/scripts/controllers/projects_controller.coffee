@@ -41,7 +41,7 @@ angular.module("backloggWeb")
 
       $scope.includeInactive = $location.search().archived is "true" || $location.search().archived is true
       $scope.view = $location.search().view
-      # $scope.orderAttribute = $location.search().sort
+      $scope.orderAttribute = $location.search().sort
 
       $cookieStore.put "projects.archived", $scope.includeInactive
       $cookieStore.put "projects.view", $scope.view
@@ -100,7 +100,8 @@ angular.module("backloggWeb")
           toastr.error "Failed to unarchive project: #{failureResponse.data.message}"
 
       # Initial sort
-      $scope.sortBy $location.search().sort
+      # $scope.sortBy $location.search().sort
+      $scope.sortBy $scope.orderAttribute
 
       return
 
