@@ -13,7 +13,7 @@ angular.module("backloggWeb")
         url: "/projects?archived&view&sort"
         templateUrl: "views/projects/index.html"
         controller: "ProjectsController"
-        reloadOnSearch: false
+        # reloadOnSearch: false
         resolve:
           $projects: ["Project", (Project) ->
             Project.all().$promise
@@ -56,10 +56,13 @@ angular.module("backloggWeb")
         url: "/projects/:projectId/sprints"
         templateUrl: "views/sprints/index.html"
         controller: "SprintsController"
-        # resolve:
-        #   $project: ["Project", (Project) ->
-        #     Project.get(projectId: $stateParams.projectId).$promise
-        #   ]
+        resolve:
+          $project: ["Project", "$stateParams", (Project, $stateParams) ->
+            Project.get(projectId: $stateParams.projectId).$promise
+          ]
+          $sprints: ["Project", "$stateParams", (Project, $stateParams) ->
+            Project.sprints(projectId: $stateParams.projectId).$promise
+          ]
 
       .state "sprints.new",
         url: "/new"
@@ -90,6 +93,18 @@ angular.module("backloggWeb")
         #   , ->
         #     $state.go "projects"
         # ]
+
+      .state "columns",
+        url: "/projects/:projectId/sprints/:sprintId/columns"
+        templateUrl: "views/columns/index.html"
+        controller: "ColumnsController"
+        resolve:
+          $project: ["Project", "$stateParams", (Project, $stateParams) ->
+            Project.get(projectId: $stateParams.projectId).$promise
+          ]
+          $sprint: ["Sprint", "$stateParams", (Sprint, $stateParams) ->
+            Sprint.get(projectId: $stateParams.projectId).$promise
+          ]
 
       return
 

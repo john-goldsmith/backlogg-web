@@ -1,4 +1,4 @@
-'use strict'
+"use strict"
 
 ###*
  # @ngdoc function
@@ -7,11 +7,11 @@
  # @description
  # Controller of the backloggWebApp
 ###
-angular.module('sprintServices', ['ngResource'])
+angular.module("sprintServices", ["ngResource"])
 
-  .factory 'Sprint', ['$resource', ($resource) ->
+  .factory "Sprint", ["$resource", ($resource) ->
 
-    $resource('http://localhost:9292/api/v1/projects/:projectId/sprints/:sprintId',
+    $resource("http://localhost:9292/api/v1/sprints/:sprintId",
       sprintId: "@id"
     ,
       all:

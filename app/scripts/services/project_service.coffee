@@ -48,6 +48,11 @@ angular.module("projectServices", ["ngResource"])
         isArray: false
         url: "http://localhost:9292/api/v1/projects/:projectId/unarchive"
 
+      sprints:
+        method: "GET"
+        isArray: true
+        url: "http://localhost:9292/api/v1/projects/:projectId/sprints"
+
     )
 
   ]

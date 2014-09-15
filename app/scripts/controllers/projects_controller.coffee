@@ -35,13 +35,16 @@ angular.module("backloggWeb")
       $cookieStore
     ) ->
 
-      # $location.search("archived", "false") if $location.search().archived is undefined
-      # $location.search("sort", "updated_at") if $location.search().sort is undefined
-      # $location.search("view", "boards") if $location.search().view is undefined
+      $location.search("archived", "false") if $location.search().archived is undefined
+      $location.search("sort", "updated_at") if $location.search().sort is undefined
+      $location.search("view", "boards") if $location.search().view is undefined
 
       $scope.includeInactive = $location.search().archived is "true" || $location.search().archived is true
       $scope.view = $location.search().view
       $scope.orderAttribute = $location.search().sort
+
+      # This gets resolved and injected via the "projects" state
+      $scope.projects = $projects
 
       $cookieStore.put "projects.archived", $scope.includeInactive
       $cookieStore.put "projects.view", $scope.view
@@ -58,9 +61,6 @@ angular.module("backloggWeb")
 
       $scope.isActiveView = (view) ->
         $scope.view == view
-
-      # This gets resolved and injected via the "projects" state
-      $scope.projects = $projects
 
       # Create a mapping of sort values to their label
       $scope.sortMapping =

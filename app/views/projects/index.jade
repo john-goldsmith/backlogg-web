@@ -38,8 +38,11 @@ div.btn-group
   button.btn.btn-default(type="button" ng-click="viewAs('list'); updateQueryParam('view', view)" ng-class="{active: isActiveView('list')}")
     i.fa.fa-list
   //- ui-sref="projects({view: view})"
-  button.btn.btn-default(type="button" class="btn btn-default" ng-click="viewAs('boards'); updateQueryParam('view', view)" ng-class="{active: isActiveView('boards')}")
+  button.btn.btn-default(type="button" ng-click="viewAs('boards'); updateQueryParam('view', view)" ng-class="{active: isActiveView('boards')}")
     i.fa.fa-th-large
+
+p(ng-if="projects.length == 0")
+  | No projects
 
 div.project(ng-repeat="project in projects | filter:showInactive | filter:search | orderBy:orderAttribute")
 

@@ -1,7 +1,6 @@
 div.panel.panel-default(ng-if="view == 'boards'" ng-class="{active: project.is_active, inactive: !project.is_active}")
   div.panel-heading
     div.panel-title
-      //- href="#/projects/{{project.id}}/sprints"
       a.project-title(ui-sref="sprints({projectId: project.id})") {{project.name}}
       small {{project.code}}
       a.project-actions(ng-click="actions()" ng-controller="ProjectActionsController as projectActionsCtrl")
