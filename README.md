@@ -3,7 +3,7 @@
 ## Requirements
 - [Homebrew](http://brew.sh)
 - [Ruby 2.1.1](https://github.com/sstephenson/rbenv#homebrew-on-mac-os-x)
-- [Postgres]()
+- [Postgres](http://postgresapp.com/)
 - [Node + NPM](http://nodejs.org)
 - [Bower](http://bower.io)
 - [Grunt](http://gruntjs.com)
@@ -17,6 +17,7 @@ $ gem install compass
 $ npm cache clean
 $ npm install
 $ bower update
+$ grunt serve
 ```
 
 ## Inspiration
