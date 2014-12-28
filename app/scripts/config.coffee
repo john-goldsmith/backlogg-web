@@ -1,5 +1,18 @@
 angular.module("backloggWeb")
 
+  .constant "Config",
+    API_HTTPS: false
+    API_HOST: "localhost"
+    API_PORT: 9292
+    API_ROOT: "/api/v1" # Include leading slash, but not trailing slash
+    MODAL_SIZE: "lg"
+
+  .factory "apiUrl", ["Config", (Config) ->
+    protocol = if Config.API_HTTPS then "https" else "http"
+    apiUrl = "#{protocol}://#{Config.API_HOST}:#{Config.API_PORT}#{Config.API_ROOT}"
+    apiUrl
+  ]
+
   .config ["$httpProvider", "$sceDelegateProvider", "$urlRouterProvider", ($httpProvider, $sceDelegateProvider, $urlRouterProvider) ->
 
     $httpProvider.defaults.useXDomain = true

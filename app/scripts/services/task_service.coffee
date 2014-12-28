@@ -1,4 +1,4 @@
-'use strict'
+"use strict"
 
 ###*
  # @ngdoc function
@@ -7,11 +7,11 @@
  # @description
  # Controller of the backloggWebApp
 ###
-angular.module('taskServices', ['ngResource'])
+angular.module("taskService", ["ngResource"])
 
-  .factory 'Task', ['$resource', ($resource) ->
+  .factory "Task", ["$resource", "apiUrl", ($resource, apiUrl) ->
 
-    $resource('http://localhost:9292/api/v1/projects/:projectId/tasks', {}
+    $resource("#{apiUrl}/projects/:projectId/tasks", {}
       isArray: true
       # all:
       #   method: "GET"

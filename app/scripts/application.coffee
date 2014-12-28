@@ -20,11 +20,11 @@ angular.module("backloggWeb", [
     "angular-underscore",
     # "restangular",
 
-    "projectServices",
-    "sprintServices",
-    "columnServices",
-    "taskServices",
-    "commentServices",
+    "projectService",
+    "sprintService",
+    "columnService",
+    "taskService",
+    "commentService",
 
     "projectsFilter"
   ])

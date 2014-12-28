@@ -7,16 +7,20 @@
  # @description
  # Controller of the backloggWebApp
 ###
-angular.module("sprintServices", ["ngResource"])
+angular.module("sprintService", ["ngResource"])
 
-  .factory "Sprint", ["$resource", ($resource) ->
+  .factory "Sprint", ["$resource", "Config", "apiUrl", ($resource, Config, apiUrl) ->
 
-    $resource("http://localhost:9292/api/v1/sprints/:sprintId",
+    $resource("#{apiUrl}/sprints/:sprintId",
       sprintId: "@id"
     ,
       all:
         method: "GET"
         isArray: true
+      columns:
+        method: "GET"
+        isArray: true
+        url: "#{apiUrl}/sprints/:sprintId/columns"
     )
 
   ]

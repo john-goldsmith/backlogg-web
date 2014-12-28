@@ -7,11 +7,11 @@
  # @description
  # Controller of the backloggWebApp
 ###
-angular.module("projectServices", ["ngResource"])
+angular.module("projectService", ["ngResource"])
 
-  .factory "Project", ["$resource", ($resource) ->
+  .factory "Project", ["$resource", "apiUrl", ($resource, apiUrl) ->
 
-    $resource("http://localhost:9292/api/v1/projects/:projectId",
+    $resource("#{apiUrl}/projects/:projectId",
       projectId: "@id"
     ,
       all:
@@ -41,17 +41,17 @@ angular.module("projectServices", ["ngResource"])
       archive:
         method: "PUT"
         isArray: false
-        url: "http://localhost:9292/api/v1/projects/:projectId/archive"
+        url: "#{apiUrl}/projects/:projectId/archive"
 
       unarchive:
         method: "PUT"
         isArray: false
-        url: "http://localhost:9292/api/v1/projects/:projectId/unarchive"
+        url: "#{apiUrl}/projects/:projectId/unarchive"
 
       sprints:
         method: "GET"
         isArray: true
-        url: "http://localhost:9292/api/v1/projects/:projectId/sprints"
+        url: "#{apiUrl}/projects/:projectId/sprints"
 
     )
 

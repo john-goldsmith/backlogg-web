@@ -1,4 +1,4 @@
-'use strict'
+"use strict"
 
 ###*
  # @ngdoc function
@@ -7,11 +7,11 @@
  # @description
  # Controller of the backloggWebApp
 ###
-angular.module('commentServices', ['ngResource'])
+angular.module("commentService", ["ngResource"])
 
-  .factory 'Comment', ['$resource', ($resource) ->
+  .factory "Comment", ["$resource", "apiUrl", ($resource, apiUrl) ->
 
-    $resource('http://localhost:9292/api/v1/projects/:projectId/comments', {}
+    $resource("#{apiUrl}/projects/:projectId/comments", {}
       isArray: true
       # all:
       #   method: "GET"

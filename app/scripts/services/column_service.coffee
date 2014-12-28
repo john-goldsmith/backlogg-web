@@ -7,15 +7,16 @@
  # @description
  # Controller of the backloggWebApp
 ###
-angular.module('columnServices', ['ngResource'])
+angular.module('columnService', ['ngResource'])
 
-  .factory 'Column', ['$resource', ($resource) ->
+  .factory "Column", ["$resource", "apiUrl", ($resource) ->
 
-    $resource('http://localhost:9292/api/v1/projects/:projectId/columns', {}
-      isArray: true
-      # all:
-      #   method: "GET"
-      #   isArray: true
+    $resource("#{apiUrl}/sprints/:sprintId/columns",
+      columnId: "@id"
+    ,
+      all:
+        method: "GET"
+        isArray: true
       # find_by_id:
       #   method: "GET"
     )
