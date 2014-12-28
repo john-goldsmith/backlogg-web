@@ -44,6 +44,7 @@ div.btn-group
 p(ng-if="projects.length == 0")
   | No projects
 
+//- div.projects
 div.project(ng-repeat="project in projects | filter:showInactive | filter:search | orderBy:orderAttribute")
 
   include ./_boards.jade

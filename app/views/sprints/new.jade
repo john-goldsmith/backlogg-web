@@ -1,0 +1,19 @@
+div.modal-header
+  h3.modal-title {{sprint.name || "New Sprint"}}
+
+div.modal-body
+
+  form(role="form" novalidate="novalidate")
+
+    div.form-group
+      label(for="sprint-name") Sprint name
+      input.form-control#sprint-name(type="text" placeholder="Sprint name" ng-model="sprint.name")
+
+    div.checkbox
+      label
+        input(type="checkbox" checked="checked" ng-model="sprint.active")
+        | Active?
+
+div.modal-footer
+  button.btn.btn-link(ng-click="cancel()") Cancel
+  button.btn.btn-primary(ng-click="ok()") OK

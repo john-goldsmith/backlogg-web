@@ -11,6 +11,9 @@ html.no-js
     <!-- endbower -->
     link(rel="stylesheet" href="styles/application.css")
 
+    <!-- Required by Angular when using HTML5 mode -->
+    //- base(href="/")
+
     <!-- build:css(.) styles/vendor.css -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/application.css -->
@@ -78,15 +81,31 @@ html.no-js
     script(src="scripts/routes.js")
 
     script(src="scripts/controllers/application_controller.js")
+
     script(src="scripts/controllers/projects_controller.js")
-    script(src="scripts/controllers/project_actions_controller.js")
-    script(src="scripts/controllers/sprints_controller.js")
-    script(src="scripts/controllers/sprint_actions_controller.js")
-    //- script(src="scripts/controllers/columns_controller.js")
-    //- script(src="scripts/controllers/tasks_controller.js")
-    //- script(src="scripts/controllers/comments_controller.js")
     script(src="scripts/controllers/new_project_controller.js")
     script(src="scripts/controllers/edit_project_controller.js")
+    script(src="scripts/controllers/project_actions_controller.js")
+
+    script(src="scripts/controllers/sprints_controller.js")
+    script(src="scripts/controllers/new_sprint_controller.js")
+    //- script(src="scripts/controllers/edit_sprint_controller.js")
+    script(src="scripts/controllers/sprint_actions_controller.js")
+
+    script(src="scripts/controllers/columns_controller.js")
+    //- script(src="scripts/controllers/new_column_controller.js")
+    //- script(src="scripts/controllers/edit_column_controller.js")
+    //- script(src="scripts/controllers/column_actions_controller.js")
+
+    //- script(src="scripts/controllers/tasks_controller.js")
+    //- script(src="scripts/controllers/new_task_controller.js")
+    //- script(src="scripts/controllers/edit_task_controller.js")
+    //- script(src="scripts/controllers/task_actions_controller.js")
+
+    //- script(src="scripts/controllers/comments_controller.js")
+    //- script(src="scripts/controllers/new_comment_controller.js")
+    //- script(src="scripts/controllers/edit_comment_controller.js")
+    //- script(src="scripts/controllers/comment_actions_controller.js")
 
     script(src="scripts/services/project_service.js")
     script(src="scripts/services/sprint_service.js")

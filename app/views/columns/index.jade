@@ -1,2 +1,7 @@
-//- div(ng-controller="ColumnsController as columnsCtrl")
-a.column(href="#/projects/{{project.project.id}}/tasks" ng-repeat="project in projects") Column
+div.columns-wrapper
+  div.columns
+    div.column(ng-repeat="column in columns")
+      | {{column.name}}
+      div.tasks
+        div.task(ng-repeat="task in column.tasks")
+          {{task.name}}
