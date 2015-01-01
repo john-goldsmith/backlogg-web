@@ -1,5 +1,7 @@
 div.modal-header
   h3.modal-title {{sprint.name || "New Sprint"}}
+    small
+      | {{sprint.startDate.date}} at {{sprint.startTime.getHours()}}:{{sprint.startTime.getMinutes()}} - {{sprint.endDate.date}} at {{sprint.endTime.getHours()}}:{{sprint.endTime.getMinutes()}}
 
 div.modal-body
 
@@ -8,6 +10,30 @@ div.modal-body
     div.form-group
       label(for="sprint-name") Sprint name
       input.form-control#sprint-name(type="text" placeholder="Sprint name" ng-model="sprint.name")
+
+    div.row
+      div.col-xs-12
+        p.input-group
+          input.form-control(type="text" datepicker-popup="" ng-model="sprint.startDate.date" is-open="sprint.startDate.opened" ng-required="true")
+          span.input-group-btn
+            button.btn.btn-default(type="button" ng-click="sprint.startDate.open($event)")
+              i.glyphicon.glyphicon-calendar
+
+    div.row
+      div.col-xs-12
+        timepicker(ng-model="sprint.startTime")
+
+    div.row
+      div.col-xs-12
+        p.input-group
+          input.form-control(type="text" datepicker-popup="" ng-model="sprint.endDate.date" is-open="sprint.endDate.opened" ng-required="true")
+          span.input-group-btn
+            button.btn.btn-default(type="button" ng-click="sprint.endDate.open($event)")
+              i.glyphicon.glyphicon-calendar
+
+    div.row
+      div.col-xs-12
+        timepicker(ng-model="sprint.endTime")
 
     div.checkbox
       label

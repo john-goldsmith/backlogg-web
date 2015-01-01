@@ -31,3 +31,15 @@ angular.module("backloggWeb")
     # $urlRouterProvider.deferIntercept()
 
   ]
+
+  .config ["datepickerConfig", "datepickerPopupConfig", "timepickerConfig", (datepickerConfig, datepickerPopupConfig, timepickerConfig) ->
+    datepickerConfig.showWeeks = false
+    datepickerConfig.minDate = new Date()
+
+    datepickerPopupConfig.closeText = "Close"
+    datepickerPopupConfig.datepickerPopup = "MM/dd/yyyy"
+
+    timepickerConfig.hourStep = 1
+    timepickerConfig.minuteStep = 15
+    timepickerConfig.showMeridian = true
+  ]

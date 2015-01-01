@@ -61,7 +61,7 @@ angular.module("backloggWeb")
       # Sprints #
       ###########
       .state "sprints",
-        url: "/projects/:projectId/sprints"
+        url: "/projects/:projectId/sprints?archived&view&sort"
         templateUrl: "views/sprints/index.html"
         controller: "SprintsController"
         resolve:
@@ -79,11 +79,14 @@ angular.module("backloggWeb")
 
       .state "sprints.new",
         url: "/new"
-        onEnter: ["$state", "$modal", "$sprints", "Config", ($state, $modal, $sprints, Config) ->
+        onEnter: ["$state", "$modal", "$sprints", "$project", "Config", ($state, $modal, $sprints, $project, Config) ->
           $modal.open
             templateUrl: "views/sprints/new.html"
             controller: "NewSprintController"
             size: Config.MODAL_SIZE
+            resolve:
+              $project: ->
+                $project
           .result.then (newSprint) ->
             $sprints.push(newSprint)
             $state.go "sprints"

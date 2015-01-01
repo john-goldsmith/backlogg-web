@@ -17,6 +17,9 @@ angular.module("sprintService", ["ngResource"])
       all:
         method: "GET"
         isArray: true
+      create:
+        method: "POST"
+        isArray: false
       columns:
         method: "GET"
         isArray: true
