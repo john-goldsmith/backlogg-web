@@ -6,6 +6,7 @@ angular.module("backloggWeb")
     API_PORT: 9292
     API_ROOT: "/api/v1" # Include leading slash, but not trailing slash
     MODAL_SIZE: "lg"
+    PROJECT_NAME: "Backlogg"
 
   .factory "apiUrl", ["Config", (Config) ->
     protocol = if Config.API_HTTPS then "https" else "http"

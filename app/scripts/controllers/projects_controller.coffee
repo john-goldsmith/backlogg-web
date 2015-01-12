@@ -79,11 +79,11 @@ angular.module("backloggWeb")
       $scope.showInactive = (project) ->
         $scope.includeInactive || project.is_active
 
-      $scope.new = ->
-        $state.go "projects.new"
+      # $scope.new = ->
+      #   $state.go "projects.new"
 
-      $scope.edit = (project) ->
-        $state.go "projects.edit", projectId: project.id
+      # $scope.edit = (project) ->
+      #   $state.go "projects.edit", projectId: project.id
 
       $scope.archive = (project) ->
         project.$archive (successResponse) ->

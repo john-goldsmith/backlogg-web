@@ -137,7 +137,7 @@ angular.module("backloggWeb")
             controller: "NewColumnController"
             size: Config.MODAL_SIZE
           .result.then (newColumn) ->
-            $projects.push(newColumn)
+            $columns.push(newColumn)
             $state.go "columns"
           , ->
             $state.go "columns"
@@ -165,7 +165,7 @@ angular.module("backloggWeb")
       #########
       .state "tasks",
         abstract: true
-        url: "/projects/:projectId/sprints/:sprintId/columns/:columnId/tasks/"
+        url: "/projects/:projectId/sprints/:sprintId/columns/:columnId/tasks"
         controller: "TasksController"
         resolve:
           $project: ["Project", "$stateParams", (Project, $stateParams) ->
@@ -197,7 +197,7 @@ angular.module("backloggWeb")
 
       .state "tasks.edit",
         url: "/:taskId/edit"
-        onEnter: ["$stateParams", "$state", "$modal", "$tasks", "Config", ($stateParams, $state, $modal, $tasks, Config) ->
+        onEnter: ["$stateParams", "$state", "$modal", "$project", "$sprint", "$column", "$tasks", "Config", ($stateParams, $state, $modal, $project, $sprint, $column, $tasks, Config) ->
           $modal.open
             templateUrl: "views/tasks/edit.html"
             controller: "EditTaskController"

@@ -1,7 +1,11 @@
 div.columns-wrapper
   div.columns
-    div.column(ng-repeat="column in columns")
+    div.column.row(ng-repeat="column in columns")
       | {{column.name}}
-      div.tasks
-        div.task(ng-repeat="task in column.tasks")
-          {{task.name}}
+      a.col-xs-12(ui-sref="tasks.new({projectId: project.id, sprintId: sprint.id, columnId: column.id})")
+        | Add task...
+      div.tasks.col-xs-12
+        //- bl-task(ng-repeat="task in column.tasks" task="task")
+        div.row(ng-repeat="task in column.tasks")
+          a.col-xs-12.task(ui-sref="tasks.edit({projectId: project.id, sprintId: sprint.id, columnId: column.id, taskId: task.id})")
+            | {{task.name}}

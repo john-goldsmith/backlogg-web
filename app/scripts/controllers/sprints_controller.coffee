@@ -79,11 +79,11 @@ angular.module("backloggWeb")
       $scope.showInactive = (sprint) ->
         $scope.includeInactive || sprint.is_active
 
-      $scope.new = ->
-        $state.go "sprints.new"
+      # $scope.new = ->
+      #   $state.go "sprints.new"
 
-      $scope.edit = (sprint) ->
-        $state.go "sprints.edit", sprintId: sprint.id
+      # $scope.edit = (sprint) ->
+      #   $state.go "sprints.edit", sprintId: sprint.id
 
       $scope.archive = (sprint) ->
         sprint.$archive (successResponse) ->

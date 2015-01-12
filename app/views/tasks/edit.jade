@@ -1,0 +1,19 @@
+div.modal-header
+  h3.modal-title {{task.name}}
+
+div.modal-body
+
+  form(role="form" novalidate="novalidate")
+
+    div.form-group
+      label(for="task-name") Task name
+      input.form-control#task-name(type="text" placeholder="Task name" ng-model="task.name")
+
+    div.checkbox
+      label
+        input(type="checkbox" ng-model="task.is_active")
+        | Active?
+
+div.modal-footer
+  button.btn.btn-link(ng-click="cancel()") Cancel
+  button.btn.btn-primary(ng-click="ok()") OK

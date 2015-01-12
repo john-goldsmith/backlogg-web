@@ -9,7 +9,7 @@ div.list-group(ng-if="view == 'list'" ng-class="{active: project.is_active, inac
       i.fa.fa-cog
     ul.dropdown-menu(role="menu")
       li
-        a(ng-click="edit(project)" ui-sref="projects.edit({projectId: project.id})")
+        a(ui-sref="projects.edit({projectId: project.id})")
           i.fa.fa-pencil
           | Edit
       li

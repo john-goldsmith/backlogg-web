@@ -1,0 +1,5 @@
+script(type="text/ng-template" id="task.html")
+
+  .row
+    a.col-xs-12.task(ui-sref="task.edit({columnId: column.id, taskId: task.id})")
+      | {{task.name}}

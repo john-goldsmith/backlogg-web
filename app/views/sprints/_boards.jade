@@ -9,7 +9,7 @@ div.sprint.panel.panel-default(ng-if="view == 'boards'" ng-class="{active: sprin
             i.fa.fa-cog
           ul.dropdown-menu(role="menu")
             li
-              a(ng-click="edit(sprint)" ui-sref="sprints.edit({projectId: project.id, sprintId: sprint.id})")
+              a(ui-sref="sprints.edit({projectId: project.id, sprintId: sprint.id})")
                 i.fa.fa-pencil
                 | Edit
             li
