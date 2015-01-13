@@ -11,7 +11,7 @@ angular.module("taskService", ["ngResource"])
 
   .factory "Task", ["$resource", "apiUrl", ($resource, apiUrl) ->
 
-    $resource("#{apiUrl}/projects/:projectId/tasks", {}
+    $resource("#{apiUrl}/tasks/:taskId", {}
       isArray: true
       # all:
       #   method: "GET"

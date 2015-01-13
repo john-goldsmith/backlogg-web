@@ -168,7 +168,7 @@ angular.module("backloggWeb")
         url: "/projects/:projectId/sprints/:sprintId/columns/:columnId/tasks"
         controller: "TasksController"
         resolve:
-          $project: ["Project", "$stateParams", (Project, $stateParams) ->
+          $project: ["Project", "Sprint", "Column", "$stateParams", (Project, Sprint, Column, $stateParams) ->
             Project.get(projectId: $stateParams.projectId).$promise
           ]
           $sprint: ["Sprint", "$stateParams", (Sprint, $stateParams) ->
@@ -177,8 +177,8 @@ angular.module("backloggWeb")
           $column: ["Column", "$stateParams", (Column, $stateParams) ->
             Column.get(columnId: $stateParams.columnId).$promise
           ]
-          $tasks: ["Column", (Column) ->
-            Column.tasks(columnId: $stateParams.columnId).$promise
+          $tasks: ["$column", ($column) ->
+            $column.tasks
           ]
 
       .state "tasks.new",

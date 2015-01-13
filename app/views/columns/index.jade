@@ -9,3 +9,5 @@ div.columns-wrapper
         div.row(ng-repeat="task in column.tasks")
           a.col-xs-12.task(ui-sref="tasks.edit({projectId: project.id, sprintId: sprint.id, columnId: column.id, taskId: task.id})")
             | {{task.name}}
+    a(ui-sref="columns.new")
+      | Add column...
