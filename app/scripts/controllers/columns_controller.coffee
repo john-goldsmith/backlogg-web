@@ -47,6 +47,9 @@ angular.module("backloggWeb")
       # This gets resolved and injected via the "projects" state
       $scope.columns = $columns
 
+      $scope.foo = ->
+        console.log $project, $sprint
+
       # See https://github.com/angular-ui/ui-router/issues/64
       # $scope.updateQueryParam = (param, value) ->
         # $location.search param, value.toString()

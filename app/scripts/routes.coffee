@@ -137,7 +137,7 @@ angular.module("backloggWeb")
             controller: "NewColumnController"
             size: Config.MODAL_SIZE
           .result.then (newColumn) ->
-            $projects.push(newColumn)
+            $columns.push(newColumn)
             $state.go "columns"
           , ->
             $state.go "columns"
@@ -165,10 +165,10 @@ angular.module("backloggWeb")
       #########
       .state "tasks",
         abstract: true
-        url: "/projects/:projectId/sprints/:sprintId/columns/:columnId/tasks/"
+        url: "/projects/:projectId/sprints/:sprintId/columns/:columnId/tasks"
         controller: "TasksController"
         resolve:
-          $project: ["Project", "$stateParams", (Project, $stateParams) ->
+          $project: ["Project", "Sprint", "Column", "$stateParams", (Project, Sprint, Column, $stateParams) ->
             Project.get(projectId: $stateParams.projectId).$promise
           ]
           $sprint: ["Sprint", "$stateParams", (Sprint, $stateParams) ->
@@ -177,8 +177,8 @@ angular.module("backloggWeb")
           $column: ["Column", "$stateParams", (Column, $stateParams) ->
             Column.get(columnId: $stateParams.columnId).$promise
           ]
-          $tasks: ["Column", (Column) ->
-            Column.tasks(columnId: $stateParams.columnId).$promise
+          $tasks: ["$column", ($column) ->
+            $column.tasks
           ]
 
       .state "tasks.new",
@@ -197,7 +197,7 @@ angular.module("backloggWeb")
 
       .state "tasks.edit",
         url: "/:taskId/edit"
-        onEnter: ["$stateParams", "$state", "$modal", "$tasks", "Config", ($stateParams, $state, $modal, $tasks, Config) ->
+        onEnter: ["$stateParams", "$state", "$modal", "$project", "$sprint", "$column", "$tasks", "Config", ($stateParams, $state, $modal, $project, $sprint, $column, $tasks, Config) ->
           $modal.open
             templateUrl: "views/tasks/edit.html"
             controller: "EditTaskController"

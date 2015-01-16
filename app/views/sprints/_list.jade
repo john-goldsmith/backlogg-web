@@ -8,7 +8,7 @@ div.list-group.sprint(ng-if="view == 'list'" ng-class="{active: sprint.is_active
       i.fa.fa-cog
     ul.dropdown-menu(role="menu")
       li
-        a(ng-click="edit(sprint)" ui-sref="sprints.edit({projectId: project.id, sprintId: sprint.id})")
+        a(ui-sref="sprints.edit({projectId: project.id, sprintId: sprint.id})")
           i.fa.fa-pencil
           | Edit
       li
