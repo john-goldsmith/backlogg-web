@@ -33,6 +33,7 @@ $ grunt serve
 - [Kanbanery](https://kanbanery.com)
 - [Flat UI Colors](http://flatuicolors.com)
 - [UI Gradients](http://uigradients.com)
+- [Jira](http://blogs.atlassian.com/2015/01/sprint-planning-atlassian/)
 
 ## To-do
 - Implement [FireAngular](https://www.firebase.com/docs/web/libraries/angular/index.html)
