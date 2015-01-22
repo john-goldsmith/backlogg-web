@@ -34,6 +34,7 @@ $ grunt serve
 - [Flat UI Colors](http://flatuicolors.com)
 - [UI Gradients](http://uigradients.com)
 - [Google Cards](https://dribbble.com/shots/1857391-Exploration-Google-Cards-Style)
+- [Jira](http://blogs.atlassian.com/2015/01/sprint-planning-atlassian/)
 
 ## To-do
 - Implement [FireAngular](https://www.firebase.com/docs/web/libraries/angular/index.html)
