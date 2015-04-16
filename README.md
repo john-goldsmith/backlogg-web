@@ -39,4 +39,3 @@ $ grunt serve
 ## To-do
 - Implement [FireAngular](https://www.firebase.com/docs/web/libraries/angular/index.html)
 - Implement [Restangular](https://github.com/mgonto/restangular)
-- Migrate from Grunt to Gulp
