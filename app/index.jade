@@ -7,17 +7,14 @@ html.no-js
     meta(name="description" content="")
     meta(name="viewport" content="width=device-width")
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- bower:css -->
-    <!-- endbower -->
-    link(rel="stylesheet" href="styles/application.css")
 
-    <!-- Required by Angular when using HTML5 mode -->
+    //- <!-- build:css styles/application.css -->
+    link(rel="stylesheet" href="styles/application.min.css")
+    //- <!-- endbuild -->
+
+    //- Required by Angular when using HTML5 mode
+    //- See https://docs.angularjs.org/guide/$location
     //- base(href="/")
-
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- endbuild -->
-    <!-- build:css(.tmp) styles/application.css -->
-    <!-- endbuild -->
 
   body(ng-app="backloggWeb" ng-controller="ApplicationController as applicationCtrl")
 
@@ -39,71 +36,61 @@ html.no-js
 
     //- include ./views/directives/task.jade
 
-    <!-- build:js(.) scripts/oldieshim.js -->
+    <!-- build:js scripts/ieshim.js -->
     <!--[if lt IE 9]>
-    script(src="bower_components/es5-shim/es5-shim.js")
-    script(src="bower_components/json3/lib/json3.min.js")
+    script(src="../bower_components/es5-shim/es5-shim.js")
+    script(src="../bower_components/json3/lib/json3.js.js")
     <![endif]-->
     <!-- endbuild -->
 
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    script(src="bower_components/jquery/dist/jquery.js")
-    script(src="bower_components/angular/angular.js")
-    script(src="bower_components/json3/lib/json3.js")
-    script(src="bower_components/underscore/underscore-min.js")
-    script(src="bower_components/restangular/dist/restangular.min.js")
-    script(src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix.js")
-    script(src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/alert.js")
-    script(src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/button.js")
-    script(src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/carousel.js")
-    script(src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/collapse.js")
-    script(src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/dropdown.js")
-    script(src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tab.js")
-    script(src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition.js")
-    script(src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/scrollspy.js")
-    script(src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal.js")
-    script(src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip.js")
-    script(src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/popover.js")
-    script(src="bower_components/angular-resource/angular-resource.js")
-    script(src="bower_components/angular-cookies/angular-cookies.js")
-    script(src="bower_components/angular-sanitize/angular-sanitize.js")
-    script(src="bower_components/angular-animate/angular-animate.js")
-    script(src="bower_components/angular-touch/angular-touch.js")
-    script(src="bower_components/angular-route/angular-route.js")
-    script(src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js")
-    script(src="bower_components/angular-underscore/angular-underscore.min.js")
-    script(src="bower_components/angular-ui-router/release/angular-ui-router.min.js")
-    <!-- endbower -->
-    <!-- endbuild -->
+    <!-- build:js scripts/application.js -->
+    script(src="../bower_components/angular/angular.js")
+    script(src="../bower_components/angular-ui-router/release/angular-ui-router.min.js")
+    //- script(src="../bower_components/angular-underscore/angular-underscore.min.js")
+    script(src="../bower_components/angular-animate/angular-animate.js")
+    script(src="../bower_components/jquery/dist/jquery.js")
+    script(src="../bower_components/underscore/underscore-min.js")
+    script(src="../bower_components/restangular/dist/restangular.min.js")
+    script(src="../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix.js")
+    script(src="../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/alert.js")
+    script(src="../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/button.js")
+    script(src="../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/carousel.js")
+    script(src="../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/collapse.js")
+    script(src="../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/dropdown.js")
+    script(src="../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tab.js")
+    script(src="../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition.js")
+    script(src="../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/scrollspy.js")
+    script(src="../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal.js")
+    script(src="../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip.js")
+    script(src="../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/popover.js")
+    script(src="../bower_components/angular-resource/angular-resource.js")
+    script(src="../bower_components/angular-cookies/angular-cookies.js")
+    script(src="../bower_components/angular-sanitize/angular-sanitize.js")
+    script(src="../bower_components/angular-touch/angular-touch.js")
+    script(src="../bower_components/angular-route/angular-route.js")
+    script(src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js")
 
-    <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    script(src="scripts/application.js")
+    script(src="scripts/boot.js")
     script(src="scripts/config.js")
     script(src="scripts/routes.js")
 
     script(src="scripts/controllers/application_controller.js")
-
     script(src="scripts/controllers/projects_controller.js")
     script(src="scripts/controllers/new_project_controller.js")
     script(src="scripts/controllers/edit_project_controller.js")
     script(src="scripts/controllers/project_actions_controller.js")
-
     script(src="scripts/controllers/sprints_controller.js")
     script(src="scripts/controllers/new_sprint_controller.js")
     //- script(src="scripts/controllers/edit_sprint_controller.js")
     script(src="scripts/controllers/sprint_actions_controller.js")
-
     script(src="scripts/controllers/columns_controller.js")
     script(src="scripts/controllers/new_column_controller.js")
     //- script(src="scripts/controllers/edit_column_controller.js")
     //- script(src="scripts/controllers/column_actions_controller.js")
-
     script(src="scripts/controllers/tasks_controller.js")
     script(src="scripts/controllers/new_task_controller.js")
     script(src="scripts/controllers/edit_task_controller.js")
     //- script(src="scripts/controllers/task_actions_controller.js")
-
     //- script(src="scripts/controllers/comments_controller.js")
     //- script(src="scripts/controllers/new_comment_controller.js")
     //- script(src="scripts/controllers/edit_comment_controller.js")

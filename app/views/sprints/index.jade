@@ -19,7 +19,7 @@ div.checkbox.btn.btn-default
   i.fa(ng-class="{'fa-eye-slash': includeInactive, 'fa-eye': !includeInactive}")
   label
     input(type="checkbox" ng-change="updateQueryParam('archived', includeInactive)" ng-model="includeInactive")
-    {{ includeInactive ? "Hide archived" : "Show archived" }}
+    | {{ includeInactive ? "Hide archived" : "Show archived" }}
 
 div.btn-group
   button.btn.btn-default(type="button" ng-click="viewAs('list'); updateQueryParam('view', view)" ng-class="{active: isActiveView('list')}")

@@ -31,7 +31,7 @@ div.checkbox.btn.btn-default
     //- ui-sref="projects({archived: includeInactive})"
     //- ng-true-value="true" ng-false-value="false"
     input(type="checkbox" ng-change="updateQueryParam('archived', includeInactive)" ng-model="includeInactive")
-    {{ includeInactive ? "Hide archived" : "Show archived" }}
+    | {{ includeInactive ? "Hide archived" : "Show archived" }}
 
 div.btn-group
   //- ui-sref="projects({view: view})"
