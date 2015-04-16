@@ -17,7 +17,7 @@ angular.module("backloggWeb", [
 
     "ui.bootstrap",
     "ui.router",
-    "angular-underscore",
+    # "angular-underscore",
     # "restangular",
 
     "projectService",
