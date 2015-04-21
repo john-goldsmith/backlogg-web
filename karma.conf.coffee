@@ -2,10 +2,11 @@
 # Generated on Tue Jan 06 2015 21:47:35 GMT-0800 (PST)
 
 module.exports = (config) ->
+
   config.set
 
     # base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: "."
+    basePath: "./"
 
     # frameworks to use
     # available frameworks: https://npmjs.org/browse/keyword/karma-adapter
@@ -13,7 +14,7 @@ module.exports = (config) ->
 
     # list of files / patterns to load in the browser
     files: [
-      "app/spec/**/*.js"
+      "app/spec/**/*.coffee"
       # "bower_components/angular/angular.js"
       # "bower_components/angular-mocks/angular-mocks.js"
       # "bower_components/angular-animate/angular-animate.js"
@@ -32,7 +33,8 @@ module.exports = (config) ->
 
     # Which plugins to enable
     plugins: [
-      "karma-phantomjs-launcher"
+      # "karma-phantomjs-launcher"
+      "karma-chrome-launcher"
       "karma-jasmine"
       "karma-coffee-preprocessor"
     ]
