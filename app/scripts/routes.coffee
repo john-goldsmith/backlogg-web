@@ -4,7 +4,8 @@ angular.module("backloggWeb")
 
     # $locationProvider.html5Mode true
 
-    $urlRouterProvider.otherwise("/projects?archived=false&sort=updated_at&view=boards")
+    # $urlRouterProvider.otherwise "/projects?archived=false&sort=updated_at&view=boards"
+    # $urlRouterProvider.otherwise "/projects"
 
     $stateProvider
 

@@ -1,4 +1,4 @@
-'use strict'
+"use strict"
 
 ###*
  # @ngdoc function
@@ -7,9 +7,9 @@
  # @description
  # Controller of the backloggWebApp
 ###
-angular.module('projectsFilter', [])
+angular.module "backloggWeb"
 
-  .filter 'onlyActive', ->
+  .filter "onlyActive", ->
 
     (showInactive) ->
       console.log showInactive
