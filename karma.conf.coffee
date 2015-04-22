@@ -30,7 +30,7 @@ module.exports = (config) ->
 
       "app/scripts/**/*.coffee"
 
-      "app/spec/**/*.coffee"
+      "app/spec/**/*_spec.coffee"
     ]
 
     # list of files to exclude
