@@ -49,13 +49,10 @@ gulp.task "compile:all", ->
 gulp.task "build", ->
   $.runSequence "clean:all", "minify:images", "compile:all", "compile:sass", "compile:coffee", "compile:jade", "concat:all", "minify:js", "clean:build"
 
-gulp.task "clean:all", ->
-  $.del config.dest.base
-
 # When serving in a development environment, it's desired to not have
 # concatenated or minified resources for easier debugging.
 gulp.task "serve", ->
-  $.runSequence "clean:all", "minify:images", "compile:sass", "compile:coffee", "compile:jade", "browsersync"
+  $.runSequence "clean:all", "minify:images", "compile:sass", "compile:coffee", "compile:jade", "browsersync:app"
 
 gulp.task "concat:all", ->
   assets = $.useref.assets()
@@ -86,12 +83,18 @@ gulp.task "minify:css", ->
     .pipe $.filesize()
     .pipe reload stream: true
 
+gulp.task "clean:all", ->
+  $.del config.dest.base
+
+gulp.task "clean:coverage", ->
+  $.del "app/spec/coverage"
+
 # Remove all JavaScript and CSS files except the manifests
 gulp.task "clean:build", ->
   $.del ["#{config.dest.coffee}/**/*", "!#{config.dest.coffee}/application.min.js"]
   # $.del ["#{config.dest.sass}/**/*", "!#{config.dest.sass}/application.min.css"]
 
-gulp.task "browsersync", ->
+gulp.task "browsersync:app", ->
   browserSync.init
     server:
       baseDir: config.dest.base
@@ -100,15 +103,28 @@ gulp.task "browsersync", ->
     notify: false
 
   gulp.watch config.src.jade, ["compile:jade"]
-  gulp.watch "app/styles/**/*.{sass,scss}", ["compile:sass"]
-  # gulp.watch config.src.coffee, ["compile:coffee"]
-  # gulp.watch("scripts/**/*.js").on "change", reload
-  # gulp.watch(config.src.coffee).on "change", reload
-  # gulp.watch "scripts/**/*.js", ["foo"]
+  gulp.watch config.src.sass, ["compile:sass"]
+  gulp.watch config.src.coffee, ["compile:coffee", "browsersync:reload"]
 
-# gulp.task "foo", ["coffee"], reload
+gulp.task "browsersync:coverage", ->
+  browserSync.init
+    server:
+      baseDir: "app/spec/coverage/Chrome 42.0.2311 (Mac OS X 10.10.3)"
+    notify: false
 
-gulp.task "test", (done) ->
+  gulp.watch "app/spec/**/*.coffee", ["generate:coverage"]
+
+gulp.task "browsersync:reload", ->
+  reload()
+
+gulp.task "generate:coverage", ->
+  $.runSequence "compile:coffee", "clean:coverage", "karma", "browsersync:reload"
+
+gulp.task "karma", (done) ->
   $.karma.server.start
     configFile: config.karma.config
+    singleRun: true
   , done
+
+gulp.task "test", ->
+  $.runSequence "clean:coverage", "karma", "browsersync:coverage"
