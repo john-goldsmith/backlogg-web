@@ -1,11 +1,10 @@
-angular.module("backloggWeb")
+angular.module "backloggWeb"
 
   .config ["$stateProvider", "$urlRouterProvider", "$locationProvider", ($stateProvider, $urlRouterProvider, $locationProvider) ->
 
     # $locationProvider.html5Mode true
 
-    # $urlRouterProvider.otherwise "/projects?archived=false&sort=updated_at&view=boards"
-    # $urlRouterProvider.otherwise "/projects"
+    $urlRouterProvider.otherwise "/projects?archived=false&sort=updated_at&view=boards"
 
     $stateProvider
 
@@ -29,11 +28,11 @@ angular.module("backloggWeb")
 
       .state "projects.new",
         url: "/new"
-        onEnter: ["$state", "$modal", "$projects", "Config", ($state, $modal, $projects, Config) ->
+        onEnter: ["$state", "$modal", "$projects", "CONFIG", ($state, $modal, $projects, CONFIG) ->
           $modal.open
             templateUrl: "views/projects/new.html"
             controller: "NewProjectController"
-            size: Config.MODAL_SIZE
+            size: CONFIG.MODAL_SIZE
           .result.then (newProject) ->
             $projects.push(newProject)
             $state.go "projects"
@@ -43,14 +42,13 @@ angular.module("backloggWeb")
 
       .state "projects.edit",
         url: "/:projectId/edit"
-        onEnter: ["$stateParams", "$state", "$modal", "$projects", "Config", ($stateParams, $state, $modal, $projects, Config) ->
+        onEnter: ["$stateParams", "$state", "$modal", "$projects", "CONFIG", ($stateParams, $state, $modal, $projects, CONFIG) ->
           $modal.open
             templateUrl: "views/projects/edit.html"
             controller: "EditProjectController"
-            size: Config.MODAL_SIZE
+            size: CONFIG.MODAL_SIZE
             resolve:
               $project: ->
-                # TODO: Remove dependency on Underscore
                 _.findWhere($projects, id: parseInt($stateParams.projectId))
           .result.then (updatedProject) ->
             $state.go "projects"
@@ -80,11 +78,11 @@ angular.module("backloggWeb")
 
       .state "sprints.new",
         url: "/new"
-        onEnter: ["$state", "$modal", "$sprints", "$project", "Config", ($state, $modal, $sprints, $project, Config) ->
+        onEnter: ["$state", "$modal", "$sprints", "$project", "CONFIG", ($state, $modal, $sprints, $project, CONFIG) ->
           $modal.open
             templateUrl: "views/sprints/new.html"
             controller: "NewSprintController"
-            size: Config.MODAL_SIZE
+            size: CONFIG.MODAL_SIZE
             resolve:
               $project: ->
                 $project
@@ -97,14 +95,13 @@ angular.module("backloggWeb")
 
       .state "sprints.edit",
         url: "/:sprintId/edit"
-        onEnter: ["$stateParams", "$state", "$modal", "$sprints", "Config", ($stateParams, $state, $modal, $sprints, Config) ->
+        onEnter: ["$stateParams", "$state", "$modal", "$sprints", "CONFIG", ($stateParams, $state, $modal, $sprints, CONFIG) ->
           $modal.open
             templateUrl: "views/sprints/edit.html"
             controller: "EditSprintController"
-            size: Config.MODAL_SIZE
+            size: CONFIG.MODAL_SIZE
             resolve:
               $sprint: ->
-                # TODO: Remove dependency on Underscore
                 _.findWhere($sprints, id: parseInt($stateParams.sprintId))
           .result.then (updatedSprint) ->
             $state.go "sprints"
@@ -132,11 +129,11 @@ angular.module("backloggWeb")
 
       .state "columns.new",
         url: "/new"
-        onEnter: ["$state", "$modal", "$project", "$sprint", "Config", ($state, $modal, $project, $sprint, Config) ->
+        onEnter: ["$state", "$modal", "$project", "$sprint", "CONFIG", ($state, $modal, $project, $sprint, CONFIG) ->
           $modal.open
             templateUrl: "views/columns/new.html"
             controller: "NewColumnController"
-            size: Config.MODAL_SIZE
+            size: CONFIG.MODAL_SIZE
           .result.then (newColumn) ->
             $columns.push(newColumn)
             $state.go "columns"
@@ -146,14 +143,13 @@ angular.module("backloggWeb")
 
       .state "columns.edit",
         url: "/:columnId/edit"
-        onEnter: ["$stateParams", "$state", "$modal", "$columns", "Config", ($stateParams, $state, $modal, $columns, Config) ->
+        onEnter: ["$stateParams", "$state", "$modal", "$columns", "CONFIG", ($stateParams, $state, $modal, $columns, CONFIG) ->
           $modal.open
             templateUrl: "views/columns/edit.html"
             controller: "EditColumnController"
-            size: Config.MODAL_SIZE
+            size: CONFIG.MODAL_SIZE
             resolve:
               $column: ->
-                # TODO: Remove dependency on Underscore
                 _.findWhere($columns, id: parseInt($stateParams.columnId))
           .result.then (updatedColumn) ->
             $state.go "columns"
@@ -184,11 +180,11 @@ angular.module("backloggWeb")
 
       .state "tasks.new",
         url: "/new"
-        onEnter: ["$state", "$modal", "$project", "$sprint", "$column", "$tasks", "Config", ($state, $modal, $project, $sprint, $column, $tasks, Config) ->
+        onEnter: ["$state", "$modal", "$project", "$sprint", "$column", "$tasks", "CONFIG", ($state, $modal, $project, $sprint, $column, $tasks, CONFIG) ->
           $modal.open
             templateUrl: "views/tasks/new.html"
             controller: "NewTaskController"
-            size: Config.MODAL_SIZE
+            size: CONFIG.MODAL_SIZE
           .result.then (newTask) ->
             $tasks.push(newTask)
             $state.go "columns"
@@ -198,14 +194,13 @@ angular.module("backloggWeb")
 
       .state "tasks.edit",
         url: "/:taskId/edit"
-        onEnter: ["$stateParams", "$state", "$modal", "$project", "$sprint", "$column", "$tasks", "Config", ($stateParams, $state, $modal, $project, $sprint, $column, $tasks, Config) ->
+        onEnter: ["$stateParams", "$state", "$modal", "$project", "$sprint", "$column", "$tasks", "CONFIG", ($stateParams, $state, $modal, $project, $sprint, $column, $tasks, CONFIG) ->
           $modal.open
             templateUrl: "views/tasks/edit.html"
             controller: "EditTaskController"
-            size: Config.MODAL_SIZE
+            size: CONFIG.MODAL_SIZE
             resolve:
               $task: ->
-                # TODO: Remove dependency on Underscore
                 _.findWhere($tasks, id: parseInt($stateParams.taskId))
           .result.then (updatedTask) ->
             $state.go "columns"

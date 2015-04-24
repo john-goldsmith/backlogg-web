@@ -7,9 +7,9 @@
  # @description
  # Controller of the backloggWebApp
 ###
-angular.module("sprintService", ["ngResource"])
+angular.module("backloggWeb.services", ["ngResource"])
 
-  .factory "Sprint", ["$resource", "Config", "apiUrl", ($resource, Config, apiUrl) ->
+  .factory "Sprint", ["$resource", "CONFIG", "apiUrl", ($resource, CONFIG, apiUrl) ->
 
     $resource("#{apiUrl}/sprints/:sprintId",
       sprintId: "@id"

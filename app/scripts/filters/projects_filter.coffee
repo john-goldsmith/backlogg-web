@@ -7,7 +7,7 @@
  # @description
  # Controller of the backloggWebApp
 ###
-angular.module "backloggWeb"
+angular.module "backloggWeb.filters"
 
   .filter "onlyActive", ->
 

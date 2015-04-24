@@ -1,4 +1,4 @@
-'use strict'
+"use strict"
 
 ###*
  # @ngdoc function
@@ -7,7 +7,7 @@
  # @description
  # Controller of the backloggWebApp
 ###
-angular.module('columnService', ['ngResource'])
+angular.module("backloggWeb.services", ["ngResource"])
 
   .factory "Column", ["$resource", "apiUrl", ($resource, apiUrl) ->
 

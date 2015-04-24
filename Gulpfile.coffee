@@ -14,12 +14,12 @@ G.task "default", ->
   console.log "Default task not configured."
 
 G.task "build", ->
-  $.runSequence "clean:all", "minify:images", "compile:all", "compile:sass", "compile:coffee", "compile:jade", "concat:all", "minify:js", "clean:build"
+  $.runSequence "clean:all", "minify:images", "compile:all", "compile:sass", "compile:coffee", "compile:jade", "copy:utils", "concat:all", "minify:js", "clean:build"
 
 # When serving in a development environment, it's desired to not have
 # concatenated or minified resources for easier debugging.
 G.task "serve", ->
-  $.runSequence "clean:all", "minify:images", "compile:sass", "compile:coffee", "compile:jade", "browsersync:app"
+  $.runSequence "clean:all", "minify:images", "compile:sass", "compile:coffee", "compile:jade", "copy:utils", "browsersync:app"
 
 G.task "test", ->
   $.runSequence "clean:coverage", "karma", "browsersync:coverage"
@@ -108,6 +108,13 @@ G.task "clean:coverage", ->
 G.task "clean:build", ->
   $.del ["#{config.dest.coffee}/**/*", "!#{config.dest.coffee}/application.min.js"]
   # $.del ["#{config.dest.sass}/**/*", "!#{config.dest.sass}/application.min.css"]
+
+###
+Copy tasks
+###
+G.task "copy:utils", ->
+  G.src "app/scripts/util/**/*.js", base: "./app"
+    .pipe G.dest config.dest.base
 
 ###
 Server tasks

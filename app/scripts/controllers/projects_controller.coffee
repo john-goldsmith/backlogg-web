@@ -7,7 +7,7 @@
  # @description
  # Controller of the backloggWebApp
 ###
-angular.module("backloggWeb")
+angular.module "backloggWeb.controllers"
 
   .controller "ProjectsController", [
 
@@ -35,26 +35,26 @@ angular.module("backloggWeb")
       $cookieStore
     ) ->
 
-      # $location.search("archived", "false") if $location.search().archived is undefined
-      # $location.search("sort", "updated_at") if $location.search().sort is undefined
-      # $location.search("view", "boards") if $location.search().view is undefined
+      $location.search("archived", "false") if $location.search().archived is undefined
+      $location.search("sort", "updated_at") if $location.search().sort is undefined
+      $location.search("view", "boards") if $location.search().view is undefined
 
-      # $scope.includeInactive = $location.search().archived is "true" || $location.search().archived is true
-      # $scope.view = $location.search().view
-      # $scope.orderAttribute = $location.search().sort
+      $scope.includeInactive = $location.search().archived is "true" || $location.search().archived is true
+      $scope.view = $location.search().view
+      $scope.orderAttribute = $location.search().sort
       # $scope.orderAttribute = "updated_at"
 
       # This gets resolved and injected via the "projects" state
-      # $scope.projects = $projects
+      $scope.projects = $projects
 
       $cookieStore.put "projects.archived", $scope.includeInactive
       $cookieStore.put "projects.view", $scope.view
       $cookieStore.put "projects.sort", $scope.orderAttribute
 
       $scope.$on "$locationChangeSuccess", ->
-        # $scope.includeInactive = $location.search().archived is "true" || $location.search().archived is true
-        # $scope.view = $location.search().view
-        # $scope.orderAttribute = $location.search().sort
+        $scope.includeInactive = $location.search().archived is "true" || $location.search().archived is true
+        $scope.view = $location.search().view
+        $scope.orderAttribute = $location.search().sort
 
       # See https://github.com/angular-ui/ui-router/issues/64
       $scope.updateQueryParam = (param, value) ->
@@ -101,9 +101,7 @@ angular.module("backloggWeb")
           toastr.error "Failed to unarchive project: #{failureResponse.data.message}"
 
       # Initial sort
-      # $scope.sortBy $location.search().sort
-      # $scope.sortBy $scope.orderAttribute
-
-      # return
+      $scope.sortBy $location.search().sort
+      $scope.sortBy $scope.orderAttribute
 
   ]

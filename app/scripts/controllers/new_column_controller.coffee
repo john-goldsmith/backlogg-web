@@ -7,7 +7,7 @@
  # @description
  # Controller of the backloggWebApp
 ###
-angular.module("backloggWeb")
+angular.module("backloggWeb.controllers")
 
   .controller "NewColumnController", ["$scope", "$modalInstance", "Column", "$state", ($scope, $modalInstance, Column, $state) ->
 

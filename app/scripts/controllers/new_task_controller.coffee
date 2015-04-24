@@ -7,7 +7,7 @@
  # @description
  # Controller of the backloggWebApp
 ###
-angular.module("backloggWeb")
+angular.module("backloggWeb.controllers")
 
   .controller "NewTaskController", ["$scope", "$modalInstance", "Task", "$state", ($scope, $modalInstance, Project, $state) ->
 

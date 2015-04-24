@@ -7,7 +7,7 @@
  # @description
  # Controller of the backloggWebApp
 ###
-angular.module("taskService", ["ngResource"])
+angular.module("backloggWeb.services", ["ngResource"])
 
   .factory "Task", ["$resource", "apiUrl", ($resource, apiUrl) ->
 

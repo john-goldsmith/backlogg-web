@@ -7,7 +7,7 @@
  # @description
  # Controller of the backloggWebApp
 ###
-angular.module("commentService", ["ngResource"])
+angular.module("backloggWeb.services", ["ngResource"])
 
   .factory "Comment", ["$resource", "apiUrl", ($resource, apiUrl) ->
 

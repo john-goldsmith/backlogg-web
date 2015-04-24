@@ -7,7 +7,7 @@
  # @description
  # Controller of the backloggWebApp
 ###
-angular.module("projectService", ["ngResource"])
+angular.module "backloggWeb.services"
 
   .factory "Project", ["$resource", "apiUrl", ($resource, apiUrl) ->
 

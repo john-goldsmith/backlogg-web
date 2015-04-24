@@ -1,4 +1,4 @@
-angular.module("backloggWeb")
+angular.module("backloggWeb.directives")
 
   .directive "blTask", ->
     restrict: "EA"

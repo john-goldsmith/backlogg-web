@@ -1,5 +1,5 @@
 doctype html
-html.no-js
+html.no-js(ng-app="backloggWeb")
 
   head
     meta(charset="utf-8")
@@ -10,13 +10,14 @@ html.no-js
 
     //- <!-- build:css styles/application.css -->
     link(rel="stylesheet" href="styles/application.min.css")
+    link(rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css")
     //- <!-- endbuild -->
 
     //- Required by Angular when using HTML5 mode
     //- See https://docs.angularjs.org/guide/$location
     //- base(href="/")
 
-  body(ng-app="backloggWeb" ng-controller="ApplicationController as applicationCtrl")
+  body(ng-controller="ApplicationController as applicationCtrl")
 
     <!--[if lt IE 7]>
     p.browsehappy
@@ -45,12 +46,12 @@ html.no-js
 
     <!-- build:js scripts/application.js -->
     script(src="../bower_components/angular/angular.js")
-    script(src="../bower_components/angular-ui-router/release/angular-ui-router.min.js")
+    script(src="../bower_components/angular-ui-router/release/angular-ui-router.js")
     //- script(src="../bower_components/angular-underscore/angular-underscore.min.js")
     script(src="../bower_components/angular-animate/angular-animate.js")
     script(src="../bower_components/jquery/dist/jquery.js")
-    script(src="../bower_components/underscore/underscore-min.js")
-    script(src="../bower_components/restangular/dist/restangular.min.js")
+    //- script(src="../bower_components/underscore/underscore.js")
+    //- script(src="../bower_components/restangular/dist/restangular.js")
     script(src="../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix.js")
     script(src="../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/alert.js")
     script(src="../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/button.js")
@@ -68,11 +69,13 @@ html.no-js
     script(src="../bower_components/angular-sanitize/angular-sanitize.js")
     script(src="../bower_components/angular-touch/angular-touch.js")
     script(src="../bower_components/angular-route/angular-route.js")
-    script(src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js")
+    script(src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js")
 
     script(src="scripts/boot.js")
     script(src="scripts/config.js")
     script(src="scripts/routes.js")
+
+    script(src="scripts/util/lodash.custom.js")
 
     script(src="scripts/controllers/application_controller.js")
     script(src="scripts/controllers/projects_controller.js")
@@ -96,11 +99,14 @@ html.no-js
     //- script(src="scripts/controllers/edit_comment_controller.js")
     //- script(src="scripts/controllers/comment_actions_controller.js")
 
+    script(src="scripts/services/api_endpoint_service.js")
+    script(src="scripts/services/api_url_service.js")
+    script(src="scripts/services/column_service.js")
+    script(src="scripts/services/comment_service.js")
+    script(src="scripts/services/config_service.js")
     script(src="scripts/services/project_service.js")
     script(src="scripts/services/sprint_service.js")
-    script(src="scripts/services/column_service.js")
     script(src="scripts/services/task_service.js")
-    script(src="scripts/services/comment_service.js")
 
     script(src="scripts/directives/task_directive.js")
 

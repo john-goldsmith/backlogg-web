@@ -7,7 +7,7 @@
  # @description
  # Controller of the backloggWebApp
 ###
-angular.module("backloggWeb")
+angular.module("backloggWeb.controllers")
 
   .controller "NewSprintController", ["$scope", "$modalInstance", "Sprint", "$state", "$project", ($scope, $modalInstance, Sprint, $state, $project) ->
 
